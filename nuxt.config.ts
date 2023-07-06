@@ -2,7 +2,13 @@
 export default defineNuxtConfig({
   telemetry: false,
   app: {
-    head: {},
+    head: {
+      htmlAttrs: {
+        class: "light scroll-smooth",
+        dir: "ltr",
+        lang: "en",
+      },
+    },
     pageTransition: { name: "page", mode: "out-in" },
     layoutTransition: { name: "layout", mode: "out-in" },
   },
@@ -13,6 +19,10 @@ export default defineNuxtConfig({
     "nuxt-lodash",
     "@nuxt/image-edge",
   ],
+
+  tailwindcss: {
+    cssPath: "./assets/scss/tailwind.scss",
+  },
 
   lodash: {
     prefix: "$",
@@ -45,6 +55,7 @@ export default defineNuxtConfig({
 
   image: {
     // The screen sizes predefined by `@nuxt/image`:
+    dir: "./assets",
     screens: {
       xs: 320,
       sm: 640,
