@@ -8,6 +8,5 @@
     <gallery-section />
     <app-testimonials />
     <contact />
-    <app-footer />
   </div>
 </template>

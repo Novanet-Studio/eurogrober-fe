@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     "@kevinmarrec/nuxt-pwa",
     "nuxt-lodash",
     "@nuxt/image-edge",
+    "nuxt-swiper",
   ],
 
   tailwindcss: {
