@@ -998,6 +998,11 @@
     ufo "^1.1.2"
     uncrypto "^0.1.3"
 
+"@phosphor-icons/vue@^2.1.4":
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@phosphor-icons/vue/-/vue-2.1.4.tgz#cd0f3756eee4330005a55b1a08b5dfed47ccc48f"
+  integrity sha512-evV8o1+y9qStbrI2vK3zXAYMqSuFUv/VSth3XMS9Q9qje0bLNZ2V8t6i2JDke+UMbt+OCB2OEn7jxe+xQFIMJw==
+
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
