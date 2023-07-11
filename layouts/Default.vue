@@ -3,6 +3,7 @@
     <AppNavigation />
     <slot />
     <AppFooter />
+    <Switcher />
     <BackTop />
   </ClientOnly>
 </template>
