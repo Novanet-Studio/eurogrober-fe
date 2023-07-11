@@ -31,7 +31,6 @@ export default {
       colors: {
         dark: "#3c4858",
         black: "#161c2d",
-        "dark-footer": "#192132",
         "color-1": "#E92946",
         "color-2": "#f68b39",
         "color-3": "#000000",
