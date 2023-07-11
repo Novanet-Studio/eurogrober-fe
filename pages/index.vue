@@ -8,5 +8,6 @@
     <gallery-section />
     <app-testimonials />
     <contact />
+    <company-info />
   </div>
 </template>
