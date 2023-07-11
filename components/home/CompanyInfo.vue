@@ -31,8 +31,8 @@ const info = [
 </script>
 
 <template>
-  <section class="relative md:py-24 py-16 overflow-hidden">
-    <div class="container relative md:mt-24 mt-16">
+  <section class="relative md:py-24 py-16 overflow-hidden bg-color-5/25">
+    <div class="container relative md:mt-24 mt-8">
       <h3
         class="mb-10 text-2xl leading-normal font-extrabold text-color-4 text-center"
       >

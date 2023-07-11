@@ -26,7 +26,7 @@ const icons = [
 </script>
 
 <template>
-  <section class="relative md:py-24 py-16 overflow-hidden">
+  <section class="relative md:py-24 py-16 pb-0 overflow-hidden bg-color-5/25">
     <div class="container relative">
       <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
         <div class="lg:col-span-5 md:col-span-6">
@@ -42,9 +42,7 @@ const icons = [
 
         <div class="lg:col-span-7 md:col-span-6">
           <div class="lg:ms-5">
-            <div
-              class="bg-white dark:bg-slate-900 rounded-md shadow dark:shadow-gray-800 p-6"
-            >
+            <div class="dark:bg-slate-900 rounded-md dark:shadow-gray-800 p-6">
               <h3
                 class="mb-6 text-2xl leading-normal font-extrabold text-color-4 text-center"
               >
@@ -161,6 +159,8 @@ const icons = [
           <component :is="item.icon" v-bind="{ weight: 'light', size: 16 }" />
         </a>
       </div>
+
+      <div class="mt-16 h-[1px] w-[320px] bg-color-5 mx-auto" />
     </div>
   </section>
 </template>
