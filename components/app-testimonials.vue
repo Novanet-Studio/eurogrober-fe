@@ -1,28 +1,58 @@
+<script setup lang="ts">
+const testimonials = [
+  {
+    text: "It seems that only fragments of the original text remain in the Lorem Ipsum texts used today.",
+    reference: "Thomas Israel",
+  },
+  {
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    reference: "Thomas Lorem",
+  },
+  {
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit, sit amet consectetur.",
+    reference: "Thomas Lorem 2",
+  },
+];
+</script>
+
 <template>
   <section class="relative md:py-24 py-16">
     <div class="container relative">
+      <header-title title="Testimonials" subtitle="what they think of us" />
+
       <div class="grid relative grid-cols-1 mt-8">
         <div class="tiny-two-item">
           <div class="tiny-slide">
-            <div
-              class="lg:flex p-6 lg:p-0 relative rounded-md shadow dark:shadow-gray-800 overflow-hidden m-2"
+            <swiper
+              :slides-per-view="1"
+              :space-between="30"
+              :pagination="{ clickable: true }"
+              autoplay
+              loop
+              navigation
             >
-              <div class="pt-6 lg:p-6 text-center lg:text-start space-y-4">
-                <p class="text-base text-slate-400 italic">
-                  " It seems that only fragments of the original text remain in
-                  the Lorem Ipsum texts used today. "
-                </p>
+              <swiper-slide v-for="(item, index) in testimonials" :key="index">
+                <div
+                  class="lg:flex p-6 lg:p-0 relative rounded-md shadow dark:shadow-gray-800 overflow-hidden m-2"
+                >
+                  <div class="pt-6 lg:p-6 text-center lg:text-start space-y-4">
+                    <p class="text-base text-slate-400 italic">
+                      "{{ item.text }}"
+                    </p>
 
-                <div>
-                  <span class="text-color-4 font-bold block mb-1"
-                    >Thomas Israel</span
-                  >
-                  <span class="text-slate-400 text-sm dark:text-white/60 block"
-                    >Staff Engineer, Algolia</span
-                  >
+                    <div>
+                      <span class="text-color-4 font-bold block mb-1">{{
+                        item.reference
+                      }}</span>
+                      <!-- <span
+                        class="text-slate-400 text-sm dark:text-white/60 block"
+                        >Staff Engineer, Algolia</span
+                      > -->
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </swiper-slide>
+            </swiper>
           </div>
           <!-- <div class="tiny-slide">
             <div
@@ -55,3 +85,11 @@
     </div>
   </section>
 </template>
+
+<style scoped>
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  --swiper-navigation-size: 2rem;
+  --swiper-navigation-color: #e92946;
+}
+</style>
