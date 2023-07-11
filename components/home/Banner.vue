@@ -28,12 +28,8 @@
               </div>
             </div>
           </div>
-          <!--end grid-->
         </div>
-        <!--end container-->
       </div>
     </div>
-    <!--end Container-->
   </section>
-  <!--end section-->
 </template>

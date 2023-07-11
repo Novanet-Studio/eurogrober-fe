@@ -1,13 +1,13 @@
 <template>
   <div>
-    <start-home />
-    <app-company />
-    <product-section />
-    <home-image />
-    <more-home />
-    <gallery-section />
-    <app-testimonials />
-    <contact />
-    <company-info />
+    <HomeBanner />
+    <HomeCompanyDetails />
+    <HomeProduct />
+    <HomeImage />
+    <HomeMoreInfo />
+    <HomeGallery />
+    <HomeTestimonials />
+    <HomeContact />
+    <HomeCompanyInfo />
   </div>
 </template>
