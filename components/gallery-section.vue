@@ -15,7 +15,7 @@
             class="absolute inset-0 bg-[url('/images/app/bg.jpg')] bg-no-repeat md:bg-left bg-center bg-cover"
           />
           <div
-            class="absolute h-20 inset-0 !bottom-full top-[calc(100%-5rem)] bg-black/70"
+            class="absolute h-20 inset-0 !bottom-full top-[calc(100%-5rem)] bg-black/70 backdrop-blur-[5px]"
           >
             <div class="flex justify-center items-center h-full">
               <p
