@@ -1,213 +1,53 @@
+<script setup lang="ts">
+import { PhHandshake, PhHammer, PhHandHeart } from "@phosphor-icons/vue";
+
+const companyText = [
+  {
+    title: "We Are Committed",
+    content:
+      "To selling quality and luxury products for comfy, beautiful kitchens. From distributors like you in search of new materials to carpenters looking for high-quality hardware or kitchen manufacturers with a dream project underway we have what it takes!",
+    icon: PhHandshake,
+  },
+  {
+    title: "We Work Hard",
+    content:
+      "On making the best choices possible when choosing our suppliers as well - from designers and architects that want great pieces at an affordable price all the way down to individuals who just need something more than they currently own. Check out some of these amazing finds below before heading over!",
+    icon: PhHammer,
+  },
+  {
+    title: "We Love American Kitchens",
+    content:
+      "And to share everything kitchen-related.We look for long-term relationships with everyone related to making luxury kitchens in Florida, especially if you're from the Sunshine State! doing business.",
+    icon: PhHandHeart,
+  },
+];
+</script>
+
 <template>
   <div class="container relative md:mt-24 mt-16">
-    <div class="grid grid-cols-1 pb-8 text-center">
-      <h3
-        class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold"
-      >
-        Our Services
-      </h3>
-
-      <p class="text-slate-400 max-w-xl mx-auto">
-        Start working with Tailwind CSS that can provide everything you need to
-        generate awareness, drive traffic, connect.
-      </p>
-    </div>
-    <!--end grid-->
-
+    <header-title title="Company" subtitle="Kitchen hardware at hand!" />
     <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-4 gap-[30px]">
-      <!-- Content -->
       <div
         class="group relative lg:px-10 mt-4 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center"
+        v-for="(item, index) in companyText"
+        :key="index"
       >
-        <div class="relative overflow-hidden text-transparent -m-3">
-          <i
-            data-feather="hexagon"
-            class="h-32 w-32 fill-indigo-600/5 mx-auto"
-          ></i>
-          <div
-            class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-indigo-600 rounded-xl transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center"
-          >
-            <i class="uil uil-wifi"></i>
-          </div>
+        <div class="flex justify-center">
+          <component :is="item.icon" v-bind="{ weight: 'fill', size: 58 }" />
         </div>
-
         <div class="mt-6">
-          <a
-            href=""
-            class="text-xl font-medium transition-all duration-500 ease-in-out hover:text-indigo-600"
-            >Free Internet</a
+          <h3
+            class="text-xl leading-7 font-bold text-[#E92946] transition-all duration-500 ease-in-out hover:text-red-800"
           >
+            {{ item.title }}
+          </h3>
           <p
-            class="text-slate-400 transition-all duration-500 ease-in-out mt-3"
+            class="text-[#58595B] text-center transition-all duration-500 ease-in-out mt-3"
           >
-            If the distribution of letters and 'words' is random, the reader
-            will not be distracted from making.
+            {{ item.content }}
           </p>
         </div>
       </div>
-      <!-- Content -->
-
-      <!-- Content -->
-      <div
-        class="group relative lg:px-10 mt-4 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center"
-      >
-        <div class="relative overflow-hidden text-transparent -m-3">
-          <i
-            data-feather="hexagon"
-            class="h-32 w-32 fill-indigo-600/5 mx-auto"
-          ></i>
-          <div
-            class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-indigo-600 rounded-xl transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center"
-          >
-            <i class="uil uil-users-alt"></i>
-          </div>
-        </div>
-
-        <div class="mt-6">
-          <a
-            href=""
-            class="text-xl font-medium transition-all duration-500 ease-in-out hover:text-indigo-600"
-            >Group Events</a
-          >
-          <p
-            class="text-slate-400 transition-all duration-500 ease-in-out mt-3"
-          >
-            If the distribution of letters and 'words' is random, the reader
-            will not be distracted from making.
-          </p>
-        </div>
-      </div>
-      <!-- Content -->
-
-      <!-- Content -->
-      <div
-        class="group relative lg:px-10 mt-4 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center"
-      >
-        <div class="relative overflow-hidden text-transparent -m-3">
-          <i
-            data-feather="hexagon"
-            class="h-32 w-32 fill-indigo-600/5 mx-auto"
-          ></i>
-          <div
-            class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-indigo-600 rounded-xl transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center"
-          >
-            <i class="uil uil-crop-alt-rotate-left"></i>
-          </div>
-        </div>
-
-        <div class="mt-6">
-          <a
-            href=""
-            class="text-xl font-medium transition-all duration-500 ease-in-out hover:text-indigo-600"
-            >Meeting Room</a
-          >
-          <p
-            class="text-slate-400 transition-all duration-500 ease-in-out mt-3"
-          >
-            If the distribution of letters and 'words' is random, the reader
-            will not be distracted from making.
-          </p>
-        </div>
-      </div>
-      <!-- Content -->
-
-      <!-- Content -->
-      <div
-        class="group relative lg:px-10 mt-4 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center"
-      >
-        <div class="relative overflow-hidden text-transparent -m-3">
-          <i
-            data-feather="hexagon"
-            class="h-32 w-32 fill-indigo-600/5 mx-auto"
-          ></i>
-          <div
-            class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-indigo-600 rounded-xl transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center"
-          >
-            <i class="uil uil-glass-tea"></i>
-          </div>
-        </div>
-
-        <div class="mt-6">
-          <a
-            href=""
-            class="text-xl font-medium transition-all duration-500 ease-in-out hover:text-indigo-600"
-            >Coffee & Tea</a
-          >
-          <p
-            class="text-slate-400 transition-all duration-500 ease-in-out mt-3"
-          >
-            If the distribution of letters and 'words' is random, the reader
-            will not be distracted from making.
-          </p>
-        </div>
-      </div>
-      <!-- Content -->
-
-      <!-- Content -->
-      <div
-        class="group relative lg:px-10 mt-4 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center"
-      >
-        <div class="relative overflow-hidden text-transparent -m-3">
-          <i
-            data-feather="hexagon"
-            class="h-32 w-32 fill-indigo-600/5 mx-auto"
-          ></i>
-          <div
-            class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-indigo-600 rounded-xl transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center"
-          >
-            <i class="uil uil-parking-circle"></i>
-          </div>
-        </div>
-
-        <div class="mt-6">
-          <a
-            href=""
-            class="text-xl font-medium transition-all duration-500 ease-in-out hover:text-indigo-600"
-            >Free Parking</a
-          >
-          <p
-            class="text-slate-400 transition-all duration-500 ease-in-out mt-3"
-          >
-            If the distribution of letters and 'words' is random, the reader
-            will not be distracted from making.
-          </p>
-        </div>
-      </div>
-      <!-- Content -->
-
-      <!-- Content -->
-      <div
-        class="group relative lg:px-10 mt-4 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center"
-      >
-        <div class="relative overflow-hidden text-transparent -m-3">
-          <i
-            data-feather="hexagon"
-            class="h-32 w-32 fill-indigo-600/5 mx-auto"
-          ></i>
-          <div
-            class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-indigo-600 rounded-xl transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center"
-          >
-            <i class="uil uil-process"></i>
-          </div>
-        </div>
-
-        <div class="mt-6">
-          <a
-            href=""
-            class="text-xl font-medium transition-all duration-500 ease-in-out hover:text-indigo-600"
-            >Relax Room</a
-          >
-          <p
-            class="text-slate-400 transition-all duration-500 ease-in-out mt-3"
-          >
-            If the distribution of letters and 'words' is random, the reader
-            will not be distracted from making.
-          </p>
-        </div>
-      </div>
-      <!-- Content -->
     </div>
-    <!--end grid-->
   </div>
-  <!--end container-->
 </template>
