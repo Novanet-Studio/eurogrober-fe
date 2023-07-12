@@ -33,7 +33,7 @@ const products = [
     />
 
     <div
-      class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px]"
+      class="grid sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px] md:grid-cols-3 lg:grid-cols-4"
     >
       <NuxtLink
         to="/product/soft-close-hinges"

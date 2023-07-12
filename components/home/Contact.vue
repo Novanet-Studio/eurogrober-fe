@@ -26,7 +26,9 @@ const icons = [
 </script>
 
 <template>
-  <section class="relative md:py-24 py-16 pb-0 overflow-hidden bg-color-5/25">
+  <section
+    class="relative md:py-24 py-16 pb-0 overflow-hidden bg-color-5/25 lg:py-16"
+  >
     <div class="container relative">
       <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
         <div class="lg:col-span-5 md:col-span-6">
@@ -40,11 +42,11 @@ const icons = [
           </div>
         </div>
 
-        <div class="lg:col-span-7 md:col-span-12">
+        <div class="md:col-span-12">
           <div class="lg:ms-5">
             <div class="dark:bg-slate-900 rounded-md dark:shadow-gray-800 p-6">
               <h3
-                class="mb-6 text-2xl leading-normal font-extrabold text-color-4 text-center"
+                class="mb-6 text-2xl leading-normal font-extrabold text-color-4 text-center lg:text-[46px] lg:mb-8"
               >
                 Contact
               </h3>
@@ -60,7 +62,7 @@ const icons = [
                 <div
                   class="grid md:grid-cols-6 md:gap-4 lg:grid-cols-12 lg:gap-6"
                 >
-                  <div class="md:col-span-3 mb-5">
+                  <div class="md:col-span-3 mb-5 lg:col-span-6">
                     <div class="text-start">
                       <label for="name" class="font-semibold text-color-4"
                         >Your Name:</label
@@ -78,7 +80,7 @@ const icons = [
                     </div>
                   </div>
 
-                  <div class="md:col-span-3 mb-5">
+                  <div class="md:col-span-3 mb-5 lg:col-span-6">
                     <div class="text-start">
                       <label for="email" class="font-semibold text-color-4"
                         >Your Email:</label

@@ -16,7 +16,7 @@ defineProps<Props>();
     </h3>
 
     <p
-      class="text-color-4 max-w-xl mx-auto pb-2 relative after:content-[''] after:w-[83px] after:h-[2px] after:bg-[#E41938] after:absolute after:left-0 after:right-0 after:bottom-0 after:mx-auto"
+      class="text-color-4 max-w-xl mx-auto pb-2 relative after:content-[''] after:w-[83px] after:h-[2px] after:bg-[#E41938] after:absolute after:left-0 after:right-0 after:bottom-0 after:mx-auto lg:text-base"
     >
       {{ subtitle }}
     </p>

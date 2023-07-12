@@ -26,7 +26,7 @@ const companyText = [
 <template>
   <div class="container relative md:mt-24 mt-16">
     <header-title title="Company" subtitle="Kitchen hardware at hand!" />
-    <div class="grid grid-cols-1 mt-4 gap-[30px] md:grid-cols-3 lg:grid-cols-3">
+    <div class="grid grid-cols-1 mt-4 gap-[30px] md:grid-cols-3">
       <div
         class="group relative lg:px-10 mt-4 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center"
         v-for="(item, index) in companyText"
@@ -37,12 +37,12 @@ const companyText = [
         </div>
         <div class="mt-6">
           <h3
-            class="text-xl leading-7 font-extrabold text-[#E92946] transition-all duration-500 ease-in-out hover:text-red-800"
+            class="text-xl leading-7 font-extrabold text-[#E92946] transition-all duration-500 ease-in-out hover:text-red-800 lg:text-3xl"
           >
             {{ item.title }}
           </h3>
           <p
-            class="text-color-4 text-center text-xs transition-all duration-500 ease-in-out mt-3"
+            class="text-color-4 text-center text-xs transition-all duration-500 ease-in-out mt-3 lg:text-xl"
           >
             {{ item.content }}
           </p>
