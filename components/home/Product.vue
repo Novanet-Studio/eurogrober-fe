@@ -1,3 +1,30 @@
+<script setup lang="ts">
+const products = [
+  {
+    name: "Branded T-Shirt",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    image: "/images/shop/items/s1.jpg",
+  },
+  {
+    name: "Branded T-Shirt 2",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    image: "/images/shop/items/s2.jpg",
+  },
+  {
+    name: "Branded T-Shirt 3",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor",
+    image: "/images/shop/items/s3.jpg",
+  },
+  {
+    name: "Branded T-Shirt 4",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sit amet consectetur adipisicing",
+    image: "/images/shop/items/s4.jpg",
+  },
+];
+</script>
+
 <template>
   <div class="container relative mt-16">
     <header-title
@@ -8,22 +35,16 @@
     <div
       class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px]"
     >
-      <NuxtLink to="/product/soft-close-hinges">
+      <NuxtLink
+        to="/product/soft-close-hinges"
+        v-for="(product, i) in products"
+        :key="i"
+      >
         <div class="group relative">
           <div
             class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500"
           >
-            <img src="/images/shop/items/s1.jpg" alt="" />
-
-            <div
-              class="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 transition-all duration-500"
-            >
-              <a
-                href="shop-cart.html"
-                class="btn bg-slate-900 border-slate-900 text-white w-full rounded-md"
-                >Add to Cart</a
-              >
-            </div>
+            <img :src="product.image" alt="" />
           </div>
 
           <div
@@ -31,17 +52,17 @@
           >
             <a
               href="shop-item-detail.html"
-              class="hover:text-indigo-600 text-lg font-semibold"
-              >Branded T-Shirt</a
+              class="text-lg font-bold md:text-sm"
             >
+              {{ product.name }}
+            </a>
           </div>
 
           <div class="mt-4 text-xs">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>{{ product.description }}</p>
           </div>
         </div>
       </NuxtLink>
-      <!--end content-->
 
       <!-- Commented for having reference -->
       <!-- <div class="group">
@@ -117,8 +138,6 @@
           </div>
         </div>
       </div> -->
-      <!--end content-->
     </div>
-    <!--end grid-->
   </div>
 </template>

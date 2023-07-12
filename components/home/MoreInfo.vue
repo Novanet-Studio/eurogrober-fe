@@ -1,20 +1,22 @@
 <template>
-  <section class="relative md:py-24 py-12">
+  <section class="relative md:py-10 py-12">
     <div class="container relative">
       <div class="grid grid-cols-1 pb-8 text-center">
         <h2
-          class="font-extrabold text-2xl text-color-1 text-center text-balance"
+          class="font-extrabold text-2xl text-color-1 text-center text-balance md:text-[40px] md:leading-10 md:mb-4"
         >
           Excellence and <br />
           innovation for kitchens
         </h2>
-        <h3 class="text-xl font-extrabold text-center text-[#58595B]">
+        <h3
+          class="text-xl font-extrabold text-center text-color-4 md:text-3xl md:mb-4"
+        >
           To give technical <br />
           solutions to everyday life
         </h3>
-        <span class="text-[#58595B]"
-          >We discover and optimize spaces filling them with
-          functionality.</span
+        <span class="text-color-4 md:text-xl md:mb-4"
+          >We discover and optimize spaces filling <br />
+          them with functionality.</span
         >
         <div>
           <button

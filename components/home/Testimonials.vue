@@ -23,15 +23,21 @@ const testimonials = [
       <div class="grid relative grid-cols-1 mt-8">
         <div class="tiny-two-item">
           <div class="tiny-slide">
-            <swiper
+            <Swiper
               :slides-per-view="1"
               :space-between="30"
-              :pagination="{ clickable: true }"
+              pagination
+              :breakpoints="{
+                '840': {
+                  slidesPerView: 2,
+                },
+              }"
               autoplay
               loop
               navigation
+              :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]"
             >
-              <swiper-slide v-for="(item, index) in testimonials" :key="index">
+              <SwiperSlide v-for="(item, index) in testimonials" :key="index">
                 <div
                   class="lg:flex p-6 lg:p-0 relative rounded-md shadow dark:shadow-gray-800 overflow-hidden m-2"
                 >
@@ -44,15 +50,11 @@ const testimonials = [
                       <span class="text-color-4 font-bold block mb-1">{{
                         item.reference
                       }}</span>
-                      <!-- <span
-                        class="text-slate-400 text-sm dark:text-white/60 block"
-                        >Staff Engineer, Algolia</span
-                      > -->
                     </div>
                   </div>
                 </div>
-              </swiper-slide>
-            </swiper>
+              </SwiperSlide>
+            </Swiper>
           </div>
           <!-- <div class="tiny-slide">
             <div

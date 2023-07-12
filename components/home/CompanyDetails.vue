@@ -26,23 +26,23 @@ const companyText = [
 <template>
   <div class="container relative md:mt-24 mt-16">
     <header-title title="Company" subtitle="Kitchen hardware at hand!" />
-    <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-4 gap-[30px]">
+    <div class="grid grid-cols-1 mt-4 gap-[30px] md:grid-cols-3 lg:grid-cols-3">
       <div
         class="group relative lg:px-10 mt-4 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center"
         v-for="(item, index) in companyText"
         :key="index"
       >
-        <div class="flex justify-center">
+        <div class="flex justify-center text-color-4">
           <component :is="item.icon" v-bind="{ weight: 'fill', size: 58 }" />
         </div>
         <div class="mt-6">
           <h3
-            class="text-xl leading-7 font-bold text-[#E92946] transition-all duration-500 ease-in-out hover:text-red-800"
+            class="text-xl leading-7 font-extrabold text-[#E92946] transition-all duration-500 ease-in-out hover:text-red-800"
           >
             {{ item.title }}
           </h3>
           <p
-            class="text-[#58595B] text-center transition-all duration-500 ease-in-out mt-3"
+            class="text-color-4 text-center text-xs transition-all duration-500 ease-in-out mt-3"
           >
             {{ item.content }}
           </p>

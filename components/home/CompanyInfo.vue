@@ -31,10 +31,10 @@ const info = [
 </script>
 
 <template>
-  <section class="relative md:py-24 py-16 overflow-hidden bg-color-5/25">
-    <div class="container relative md:mt-24 mt-8">
+  <section class="relative md:py-12 py-16 overflow-hidden bg-color-5/25">
+    <div class="container relative md:mt-0 mt-8">
       <h3
-        class="mb-10 text-2xl leading-normal font-extrabold text-color-4 text-center"
+        class="mb-10 text-2xl leading-normal font-extrabold text-color-4 text-center md:text-3xl"
       >
         Company information
       </h3>

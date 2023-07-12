@@ -10,23 +10,24 @@
         ></div>
         <div class="container relative">
           <div class="grid grid-cols-1">
-            <div class="md:text-start text-center">
+            <div class="text-center md:text-start">
               <h1
-                class="font-extrabold text-color-1 lg:leading-normal leading-normal text-xl lg:text-5xl mb-2"
+                class="font-extrabold text-color-1 leading-normal mb-2 text-xl md:text-3xl lg:text-5xl lg:leading-normal"
               >
                 Kitchen hardware at hand!
               </h1>
-              <p class="text-color-5 text-lg max-w-xl text-center">
+              <p
+                class="text-color-5 text-lg max-w-xl text-center md:text-start md:text-xl md:max-w-sm"
+              >
                 We are committed to selling quality and luxury products for
                 kitchens.
               </p>
-              <div class="mt-6">
-                <a
-                  href=""
-                  class="btn bg-color-1 hover:bg-red-800 border-color-1 hover:border-red-800 text-white rounded-full me-2 mt-2"
+              <div class="mt-6 md:mt-2">
+                <button
+                  class="btn bg-color-1 text-white rounded-full me-2 mt-2 hover:bg-red-800 border-color-1 hover:border-red-800"
                 >
                   Learn more
-                </a>
+                </button>
               </div>
             </div>
           </div>
