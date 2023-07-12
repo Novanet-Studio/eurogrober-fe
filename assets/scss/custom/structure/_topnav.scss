@@ -309,7 +309,7 @@
 @media (min-width: 992px) {
   #topnav {
     .navigation-menu {
-      @apply flex flex-wrap justify-center;
+      @apply flex flex-wrap;
 
       &.justify-end {
         li {
