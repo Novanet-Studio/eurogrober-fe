@@ -1,5 +1,4 @@
 <template>
-  <!-- Footer Start -->
   <footer class="footer relative text-color-4">
     <div class="py-[30px] px-0">
       <div class="container relative text-center">
