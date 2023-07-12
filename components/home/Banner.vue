@@ -17,7 +17,7 @@
                 Kitchen hardware at hand!
               </h1>
               <p
-                class="text-color-5 text-lg max-w-xl text-center md:text-start md:text-xl md:max-w-sm lg:text-3xl"
+                class="text-color-5 text-lg max-w-xl text-center md:text-start md:text-xl md:max-w-sm lg:text-3xl lg:max-w-lg"
               >
                 We are committed to selling quality and luxury products for
                 kitchens.
