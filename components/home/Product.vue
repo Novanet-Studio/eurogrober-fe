@@ -121,5 +121,4 @@
     </div>
     <!--end grid-->
   </div>
-  <!--end container-->
 </template>

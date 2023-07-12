@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const isProductDetail = ref(false);
+
+provide("isProductDetail", isProductDetail);
 </script>
 
 <template>

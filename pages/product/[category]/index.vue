@@ -2,6 +2,14 @@
 definePageMeta({
   layout: "category",
 });
+
+const router = useRouter();
+const isProductDetail = inject("isProductDetail") as Ref<boolean>;
+
+function gotoProductDetail() {
+  isProductDetail.value = true;
+  router.push("/product/soft-close-hinges/DV90");
+}
 </script>
 
 <template>
@@ -9,7 +17,7 @@ definePageMeta({
     <div
       class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 mt-8 gap-[30px]"
     >
-      <NuxtLink to="/product/soft-close-hinges">
+      <button @click.prevent="gotoProductDetail">
         <div class="group relative">
           <div
             class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500"
@@ -37,7 +45,7 @@ definePageMeta({
             >
           </div>
         </div>
-      </NuxtLink>
+      </button>
     </div>
   </section>
 </template>
