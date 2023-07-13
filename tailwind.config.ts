@@ -26,6 +26,14 @@ export default {
         xl: "5rem",
         "2xl": "13rem",
       },
+      screens: {
+        xs: "500px",
+        sm: "600px",
+        md: "718px",
+        lg: "980px",
+        xl: "1080px",
+        "2xl": "1436px",
+      },
     },
     extend: {
       colors: {

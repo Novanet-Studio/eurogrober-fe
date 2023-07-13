@@ -37,3 +37,9 @@
 @import "custom/plugins/testi";
 @import "custom/plugins/choices";
 @import "custom/plugins/datepicker";
+
+@layer components {
+   .container {
+      @apply max-w-full px-4 md:px-10 lg:px-20;
+   }
+}
