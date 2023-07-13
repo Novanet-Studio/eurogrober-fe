@@ -16,7 +16,7 @@ const categories = [
 <template>
   <div class="grid grid-cols-2 gap-[2px] mb-16 md:grid-cols-4">
     <button
-      class="text-[10px] p-3 text-center transition ease-in md:p-2"
+      class="text-[10px] p-3 text-center transition ease-in md:p-2 lg:text-sm"
       :class="
         active === category
           ? 'bg-color-4 text-white font-extrabold'

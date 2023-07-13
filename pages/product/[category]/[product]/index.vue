@@ -66,7 +66,7 @@ const sizes = [
         </Swiper>
         <button class="slide__next mt-4"><PhCaretDown /></button>
       </div>
-      <div>
+      <div class="flex flex-col lg:flex-row">
         <div class="relative">
           <Swiper
             :space-between="32"
@@ -77,7 +77,7 @@ const sizes = [
               nextEl: '.slide__next',
               prevEl: '.slide__prev',
             }"
-            class="mySwiper2 h-60 md:h-96 w-64 md:w-[35.5rem] mt-8 overflow-auto"
+            class="mySwiper2 h-60 md:h-96 w-64 md:w-[35.5rem] mt-8 overflow-auto lg:w-[40rem]"
             :modules="[SwiperNavigation, SwiperThumbs, SwiperMousewheel]"
           >
             <SwiperSlide class="" v-for="(slide, i) in slides" :key="i">
@@ -95,7 +95,9 @@ const sizes = [
           </Swiper>
         </div>
         <div>
-          <ul class="text-[12px] px-2 mt-4 md:text-base list-disc md:px-8">
+          <ul
+            class="text-[12px] px-2 mt-4 md:text-base list-disc md:px-8 lg:mt-8"
+          >
             <li>Element 1</li>
             <li>Element 2</li>
             <li>Element 3</li>
