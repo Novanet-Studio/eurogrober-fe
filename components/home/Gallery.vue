@@ -25,7 +25,7 @@
           >
             <div class="flex justify-center items-center h-full">
               <p
-                class="text-white font-bold text-sm max-w-xl w-full relative after:content-[''] after:w-[280px] after:h-[1px] after:bg-[#E41938] after:absolute after:left-0 after:right-0 after:top-0 after:mx-auto text-center pt-2 md:text-xl md:after:w-[543px] lg:text-4xl lg:after:w-[1200px]"
+                class="text-white font-bold text-sm max-w-xl w-full relative after:content-[''] after:w-[280px] after:h-[1px] after:bg-[#E41938] after:absolute after:left-0 after:right-0 after:top-0 after:mx-auto text-center pt-2 md:text-xl md:after:w-[543px] lg:text-4xl"
               >
                 Full extension drawers slide
               </p>

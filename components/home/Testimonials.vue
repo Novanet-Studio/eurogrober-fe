@@ -31,6 +31,9 @@ const testimonials = [
                 '840': {
                   slidesPerView: 2,
                 },
+                '1280': {
+                  slidesPerView: 4,
+                },
               }"
               autoplay
               loop
