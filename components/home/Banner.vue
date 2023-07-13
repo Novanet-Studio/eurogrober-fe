@@ -1,5 +1,5 @@
 <template>
-  <section class="relative mt-20">
+  <section class="relative mt-28">
     <div class="container-fluid relative">
       <div class="relative py-48 table w-full shadow-md overflow-hidden">
         <div

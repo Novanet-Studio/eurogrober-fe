@@ -40,7 +40,7 @@ const sizes = [
 </script>
 
 <template>
-  <section class="container relative mt-20 mb-10">
+  <section class="container relative mt-24 mb-10">
     <div
       class="grid grid-cols-[4rem_1fr] gap-3 md:grid-cols-[7rem_1fr] md:gap-8"
     >

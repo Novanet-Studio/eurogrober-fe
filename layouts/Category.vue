@@ -9,7 +9,7 @@ provide("isProductDetail", isProductDetail);
     <AppNavigation />
     <div>
       <section
-        class="relative table w-full mt-20 bg-[#D9D9D9] dark:bg-slate-800"
+        class="relative table w-full mt-24 bg-[#D9D9D9] dark:bg-slate-800"
       >
         <div class="container relative">
           <div class="relative py-2 lg:py-4">
