@@ -36,7 +36,7 @@ function gotoProductDetail() {
           </div>
 
           <div
-            class="mt-4 absolute -top-9 left-0 w-11/12 bg-red-600 px-4 py-1 text-white rounded-r-full text-sm"
+            class="mt-4 absolute -top-9 left-0 w-11/12 bg-red-600 px-4 py-1 text-white rounded-r-full text-sm md:text-start"
           >
             <a
               href="shop-item-detail.html"

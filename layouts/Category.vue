@@ -31,7 +31,9 @@ provide("isProductDetail", isProductDetail);
         </div>
       </section>
 
-      <div class="shadow-md dark:shadow-gray-800 overflow-hidden m-6">
+      <div
+        class="shadow-md dark:shadow-gray-800 overflow-hidden m-6 grid md:grid-cols-2"
+      >
         <div class="lg:flex p-6 lg:p-0 relative rounded-md">
           <div class="pt-1 lg:p-6 text-center lg:text-start space-y-4">
             <h3 class="text-xl text-color-1 font-extrabold">
@@ -51,7 +53,7 @@ provide("isProductDetail", isProductDetail);
         </div>
       </div>
 
-      <div class="container relative mt-16">
+      <div class="container relative mt-16 md:mt-8">
         <HeaderTitle
           title="Products"
           subtitle="Kitchen hardware and accessories"

@@ -41,7 +41,9 @@ const sizes = [
 
 <template>
   <section class="container relative mt-20 mb-10">
-    <div class="grid grid-cols-[4rem_1fr] gap-3">
+    <div
+      class="grid grid-cols-[4rem_1fr] gap-3 md:grid-cols-[7rem_1fr] md:gap-8"
+    >
       <div class="h-full flex flex-col items-center">
         <button class="slide__prev mb-4"><PhCaretUp /></button>
         <Swiper
@@ -75,7 +77,7 @@ const sizes = [
               nextEl: '.slide__next',
               prevEl: '.slide__prev',
             }"
-            class="mySwiper2 h-60 w-64 mt-8 overflow-auto"
+            class="mySwiper2 h-60 md:h-96 w-64 md:w-[35.5rem] mt-8 overflow-auto"
             :modules="[SwiperNavigation, SwiperThumbs, SwiperMousewheel]"
           >
             <SwiperSlide class="" v-for="(slide, i) in slides" :key="i">
@@ -93,7 +95,7 @@ const sizes = [
           </Swiper>
         </div>
         <div>
-          <ul class="text-[12px] px-2 mt-4">
+          <ul class="text-[12px] px-2 mt-4 md:text-base list-disc md:px-8">
             <li>Element 1</li>
             <li>Element 2</li>
             <li>Element 3</li>
@@ -103,7 +105,7 @@ const sizes = [
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-2 gap-8 mt-12">
+    <div class="grid grid-cols-2 gap-8 mt-12 md:grid-cols-4">
       <div
         class="text-[10px] p-6 text-color-4 font-bold border border-color-5 relative"
         v-for="(size, i) in sizes"
