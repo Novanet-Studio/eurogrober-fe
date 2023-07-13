@@ -41,20 +41,41 @@ function animate() {
   const { width, height, top, left } = activeItem.$el.getBoundingClientRect();
 
   const settings = {
-    // x: left - menuOffset.x,
-    // y: top - menuOffset.y,
     x: left - (menuOffset.x + 10),
     y: top - (menuOffset.y - 5),
     width,
     height,
   };
 
-  console.log(settings);
-
   Object.assign(styles, settings);
 }
 
+function handleScroll() {
+  const COMPANY = 617;
+  const PRODUCTS = 1169;
+  const GALLERY = 3521;
+  const CONTACT = 4919;
+
+  if (window.scrollY < COMPANY || window.scrollY < PRODUCTS) {
+    active.value = 0;
+  } else if (window.scrollY <= GALLERY) {
+    active.value = 1;
+  } else if (window.scrollY < CONTACT) {
+    active.value = 2;
+  } else if (window.scrollY >= CONTACT) {
+    active.value = 3;
+  }
+}
+
 watch(active, animate);
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+});
 </script>
 
 <template>
