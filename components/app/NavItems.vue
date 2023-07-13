@@ -1,69 +1,85 @@
 <script setup lang="ts">
 const isOpen = inject("isOpen") as Ref<boolean>;
 
-const ballPosition = ref();
-const active = reactive({
-  id: "",
-  clientX: 0,
-  clientY: 0,
+const root = ref();
+// const indicator = ref();
+
+const active = ref();
+const items = [
+  {
+    name: "Company",
+    to: "/",
+  },
+  {
+    name: "Products",
+    to: "#products",
+  },
+  {
+    name: "Gallery",
+    to: "#gallery",
+  },
+  {
+    name: "Contact",
+    to: "#contact",
+  },
+];
+
+const $items = ref<any>([]);
+
+const styles = reactive({
+  x: 0,
+  y: 0,
+  width: 0,
+  height: 0,
 });
 
-const handleActive = (el) => {
-  active.id = el.target.id;
-  active.clientX = el.clientX;
-  active.clientY = el.clientY;
+const elementsRef = (el: any) => $items.value.push(el);
 
-  ballPosition.value = el.target.offsetParent.offsetLeft - 10;
-};
+function animate() {
+  const menuOffset = root.value.getBoundingClientRect();
+  const activeItem = $items.value[active.value];
+  const { width, height, top, left } = activeItem.$el.getBoundingClientRect();
+
+  const settings = {
+    // x: left - menuOffset.x,
+    // y: top - menuOffset.y,
+    x: left - (menuOffset.x + 10),
+    y: top - (menuOffset.y - 5),
+    width,
+    height,
+  };
+
+  console.log(settings);
+
+  Object.assign(styles, settings);
+}
+
+watch(active, animate);
 </script>
 
 <template>
   <div id="navigation" :class="isOpen ? 'block' : 'hidden'">
-    <ul class="navigation-menu justify-end relative">
+    <ul class="navigation-menu justify-end relative" ref="root">
       <li
         :style="{
-          '--left-pos': `${ballPosition}px`,
+          '--el-left': `${styles.x}px`,
+          '--el-top': `${styles.y}px`,
+          '--el-width': `${styles.width}px`,
+          '--el-height': `${styles.height}px`,
         }"
-        class="w-28 rounded-full h-10 bg-color-1 block transition-all duration-200 ease-in mt-4 absolute -right-8 left-[var(--left-pos)]"
+        class="w-[var(--el-width)] rounded-full h-8 bg-color-1 block transition-all duration-200 ease-in mt-4 absolute top-[var(--el-top)] left-[var(--el-left)]"
       ></li>
-      <li>
-        {{ active.id }}
-      </li>
-      <li>
+      <li
+        v-for="(link, index) in items"
+        :key="index"
+        :class="active === index ? 'active' : '!text-color-4'"
+      >
         <nuxt-link
-          id="company"
-          to="/"
+          :to="link.to"
           class="sub-menu-item"
-          :class="active.id === 'company' ? '!text-white' : '!text-color-4'"
-          @click.prevent="handleActive"
-          >Company</nuxt-link
-        >
-      </li>
-      <li>
-        <nuxt-link
-          id="products"
-          to="/"
-          class="sub-menu-item"
-          @click.prevent="handleActive"
-          >Products</nuxt-link
-        >
-      </li>
-      <li>
-        <nuxt-link
-          id="gallery"
-          to="/"
-          class="sub-menu-item"
-          @click.prevent="handleActive"
-          >Gallery</nuxt-link
-        >
-      </li>
-      <li>
-        <nuxt-link
-          id="contact"
-          to="/"
-          class="sub-menu-item"
-          @click.prevent="handleActive"
-          >Contact</nuxt-link
+          :ref="elementsRef"
+          @click.prevent="active = index"
+          >{{ link.name }}</nuxt-link
         >
       </li>
     </ul>
