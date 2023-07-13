@@ -26,7 +26,7 @@ const products = [
 </script>
 
 <template>
-  <div class="container relative mt-16">
+  <section id="products" class="container relative mt-16">
     <header-title
       title="Products"
       subtitle="Kitchen hardware and accessories"
@@ -139,5 +139,5 @@ const products = [
         </div>
       </div> -->
     </div>
-  </div>
+  </section>
 </template>

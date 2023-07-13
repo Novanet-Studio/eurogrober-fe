@@ -24,7 +24,7 @@ const companyText = [
 </script>
 
 <template>
-  <div class="container relative md:mt-24 mt-16">
+  <section id="company" class="container relative md:mt-24 mt-16">
     <header-title title="Company" subtitle="Kitchen hardware at hand!" />
     <div class="grid grid-cols-1 mt-4 gap-[30px] md:grid-cols-3">
       <div
@@ -49,5 +49,5 @@ const companyText = [
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>

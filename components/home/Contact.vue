@@ -27,6 +27,7 @@ const icons = [
 
 <template>
   <section
+    id="contact"
     class="relative md:py-24 py-16 pb-0 overflow-hidden bg-color-5/25 lg:py-16"
   >
     <div class="container relative">

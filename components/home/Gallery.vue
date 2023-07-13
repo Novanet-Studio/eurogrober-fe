@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="gallery">
     <div class="container relative mt-16 md:mt-8">
       <header-title title="Gallery" subtitle="Kitchen possibilities" />
       <div class="flex justify-center">
