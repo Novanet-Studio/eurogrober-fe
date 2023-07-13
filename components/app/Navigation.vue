@@ -4,8 +4,11 @@ provide("isOpen", isOpen);
 </script>
 
 <template>
-  <nav id="topnav" class="defaultscroll is-sticky bg-white dark:bg-slate-900">
-    <div class="container relative">
+  <nav
+    id="topnav"
+    class="defaultscroll is-sticky bg-white dark:bg-slate-900 py-4"
+  >
+    <div class="container relative h-full">
       <AppLogo />
       <AppMenuBurger />
       <AppNavItems />
