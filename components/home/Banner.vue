@@ -5,9 +5,8 @@
         <div
           class="absolute inset-0 bg-[url('/images/shop/bg.jpg')] bg-no-repeat md:bg-left bg-center bg-cover"
         ></div>
-        <div
-          class="absolute inset-0 bg-slate-950/30 backdrop-blur-[2px] hover:backdrop-blur-0"
-        ></div>
+        <!-- backdrop-blur-[2px] hover:backdrop-blur-0 -->
+        <div class="absolute inset-0 bg-slate-950/30"></div>
         <div class="container relative">
           <div class="grid grid-cols-1">
             <div class="text-center md:text-start">
