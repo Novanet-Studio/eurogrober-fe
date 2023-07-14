@@ -1,0 +1,28 @@
+query GetProducts {
+  products {
+    data {
+      attributes {
+        name
+        description
+        category {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        images {
+          data {
+            id
+            attributes {
+              name
+              formats
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
