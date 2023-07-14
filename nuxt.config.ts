@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import gql from "@rollup/plugin-graphql";
+
 export default defineNuxtConfig({
   telemetry: false,
   app: {
@@ -66,6 +67,10 @@ export default defineNuxtConfig({
       xxl: 1536,
       "2xl": 1536,
     },
+  },
+
+  vite: {
+    plugins: [gql()],
   },
 
   devtools: { enabled: true },
