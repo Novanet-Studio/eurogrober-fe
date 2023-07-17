@@ -71,13 +71,12 @@ onMounted(async () => {
         <div class="lg:flex p-6 lg:p-0 relative rounded-md lg:items-center">
           <div class="pt-1 lg:p-6 text-center space-y-4">
             <h3 class="text-xl text-color-1 font-extrabold lg:text-5xl">
-              Lorem, ipsum dolor.
+              Soft-close hinges
             </h3>
 
             <div>
               <span class="text-color-4 block mb-1 text-center lg:text-4xl">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Dolorum laborum qui, tempora odio voluptatum.
+                We know you do your best at what you do. And only quality materials can help. Check our soft-close hinges
               </span>
             </div>
           </div>
