@@ -14,6 +14,10 @@ provide("isProductDetail", isProductDetail);
 provide("categories", categories);
 provide("active", active);
 
+const categorySelected = computed(() => {
+  return categories.value.find((category) => category.slug === active.value) ?? '';
+})
+
 onMounted(async () => {
   try {
     const categoriesRes = await graphql(GetCategories);
@@ -40,14 +44,21 @@ onMounted(async () => {
               <li
                 class="inline text-[12px] lg:text-base text-color-4 duration-500 ease-in-out hover:text-color-4"
               >
-                <a href="index-shop.html">Home</a>
+                <NuxtLink to="/">Home</NuxtLink>
               </li>
               <li class="inline pl-1 text-color-4">/</li>
+              <li
+                class="inline text-[12px] lg:text-base text-color-4"
+                aria-current="page"
+              >
+                Category
+              </li>
+              <li class="inline pr-1 text-color-4">/</li>
               <li
                 class="inline text-[12px] lg:text-base font-extrabold text-color-4"
                 aria-current="page"
               >
-                Cart
+                {{ categorySelected.name }}
               </li>
             </ul>
           </div>
