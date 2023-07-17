@@ -1,7 +1,28 @@
-<script setup lang="ts">
+<script setup>
+import mapper from "smapper";
+import { GetCategories } from "~/graphql/queries";
+
+const active = ref("");
+const categories = ref([]);
 const isProductDetail = ref(false);
 
+const graphql = useStrapiGraphQL();
+
 provide("isProductDetail", isProductDetail);
+provide("categories", categories);
+provide("active", active);
+
+onMounted(async () => {
+  try {
+    const categoriesRes = await graphql(GetCategories);
+    const categoriesMapped = mapper(categoriesRes.data).categories;
+
+    categories.value = categoriesMapped;
+  } catch (error) {
+    console.error("Something went wrong getting products");
+  }
+});
+
 </script>
 
 <template>

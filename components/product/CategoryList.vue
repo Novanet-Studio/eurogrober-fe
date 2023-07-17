@@ -1,16 +1,10 @@
-<script setup lang="ts">
-const active = ref("Soft-close hinges");
+<script setup>
+const categories = inject('categories');
+const active = inject('active');
 
-const categories = [
-  "Gola profiles & accessories",
-  "Soft-close hinges",
-  "Kitchen sinks",
-  "Hydraulic dampers for kitchen",
-  "Full extension slides & drawers",
-  "Toe kick panel and adjustable legs",
-  "Kitchen faucets",
-  "Supports & accessories",
-];
+function changeCategory(slug) {
+  active.value = categories.value.find((category) => category.slug === slug).slug;
+}
 </script>
 
 <template>
@@ -18,15 +12,15 @@ const categories = [
     <button
       class="text-[10px] p-3 text-center transition ease-in md:p-2 lg:text-sm"
       :class="
-        active === category
+        active === category.slug
           ? 'bg-color-4 text-white font-extrabold'
           : 'bg-color-5 text-color-4'
       "
       v-for="(category, i) in categories"
       :key="i"
-      @click="active = category"
+      @click="changeCategory(category.slug)"
     >
-      {{ category }}
+      {{ category.name }}
     </button>
   </div>
 </template>
