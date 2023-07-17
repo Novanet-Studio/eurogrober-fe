@@ -13,6 +13,7 @@ onMounted(async () => {
     categories.value = categoriesMapped.map((category) => ({
       id: category.id,
       name: category.name,
+      slug: category.slug,
       product: category.products[0],
     }));
 
@@ -34,7 +35,7 @@ onMounted(async () => {
       class="grid sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px] md:grid-cols-3 lg:grid-cols-4"
     >
       <NuxtLink
-        to="/product/soft-close-hinges"
+        :to="`/category/${category.slug}`"
         v-for="(category, i) in categories"
         :key="i"
       >
