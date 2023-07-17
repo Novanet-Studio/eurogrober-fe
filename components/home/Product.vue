@@ -1,28 +1,26 @@
-<script setup lang="ts">
-const products = [
-  {
-    name: "Branded T-Shirt",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    image: "/images/shop/items/s1.jpg",
-  },
-  {
-    name: "Branded T-Shirt 2",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    image: "/images/shop/items/s2.jpg",
-  },
-  {
-    name: "Branded T-Shirt 3",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor",
-    image: "/images/shop/items/s3.jpg",
-  },
-  {
-    name: "Branded T-Shirt 4",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sit amet consectetur adipisicing",
-    image: "/images/shop/items/s4.jpg",
-  },
-];
+<script setup>
+import mapper from "smapper";
+import { GetCategories } from "~/graphql/queries";
+
+const graphql = useStrapiGraphQL();
+const categories = ref([]);
+
+onMounted(async () => {
+  try {
+    const categoriesRes = await graphql(GetCategories);
+    const categoriesMapped = mapper(categoriesRes.data).categories;
+
+    categories.value = categoriesMapped.map((category) => ({
+      id: category.id,
+      name: category.name,
+      product: category.products[0],
+    }));
+
+  } catch (error) {
+    console.error("Something went wrong getting products");
+  }
+});
+
 </script>
 
 <template>
@@ -37,14 +35,14 @@ const products = [
     >
       <NuxtLink
         to="/product/soft-close-hinges"
-        v-for="(product, i) in products"
+        v-for="(category, i) in categories"
         :key="i"
       >
         <div class="group relative">
           <div
             class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500"
           >
-            <img :src="product.image" alt="" />
+            <img :src="category.product.images[0].url" alt="" />
           </div>
 
           <div
@@ -54,13 +52,13 @@ const products = [
               href="shop-item-detail.html"
               class="text-lg font-bold md:text-sm"
             >
-              {{ product.name }}
+              {{ category.name }}
             </a>
           </div>
 
-          <div class="mt-4 text-xs">
+          <!-- <div class="mt-4 text-xs">
             <p>{{ product.description }}</p>
-          </div>
+          </div> -->
         </div>
       </NuxtLink>
 

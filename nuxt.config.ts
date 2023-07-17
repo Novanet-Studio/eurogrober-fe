@@ -15,11 +15,12 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    "nuxt-lodash",
+    "nuxt-swiper",
+    "@nuxtjs/strapi",
+    "@nuxt/image-edge",
     "@nuxtjs/tailwindcss",
     "@kevinmarrec/nuxt-pwa",
-    "nuxt-lodash",
-    "@nuxt/image-edge",
-    "nuxt-swiper",
   ],
 
   tailwindcss: {

@@ -4,6 +4,22 @@ query GetCategories {
       id
       attributes {
         name
+        products {
+          data {
+            id
+            attributes{
+              images{
+                data {
+                  id
+                  attributes {
+                    name
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
