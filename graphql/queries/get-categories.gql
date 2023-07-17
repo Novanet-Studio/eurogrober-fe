@@ -9,6 +9,7 @@ query GetCategories {
           data {
             id
             attributes{
+              name
               images{
                 data {
                   id

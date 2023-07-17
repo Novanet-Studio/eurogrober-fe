@@ -1,15 +1,27 @@
-<script setup lang="ts">
+<script setup>
 definePageMeta({
   layout: "category",
 });
 
+const products = ref([]);
+
 const router = useRouter();
-const isProductDetail = inject("isProductDetail") as Ref<boolean>;
+const isProductDetail = inject("isProductDetail");
+const categories = inject('categories');
+const active = inject('active');
 
 function gotoProductDetail() {
   isProductDetail.value = true;
   router.push("/product/soft-close-hinges/DV90");
 }
+
+watchEffect(() => {
+  const category = categories.value.find((category) => category.slug === active.value);
+
+  setTimeout(() => {
+    products.value = category.products;
+  }, 500);
+});
 </script>
 
 <template>
@@ -17,22 +29,12 @@ function gotoProductDetail() {
     <div
       class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 mt-8 gap-[30px]"
     >
-      <button @click.prevent="gotoProductDetail">
+      <button v-for="(product, i) in products" :key="i" @click.prevent="gotoProductDetail(product.id)">
         <div class="group relative">
           <div
             class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500"
           >
-            <img src="/images/shop/items/s1.jpg" alt="" />
-
-            <div
-              class="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 transition-all duration-500"
-            >
-              <a
-                href="shop-cart.html"
-                class="btn bg-slate-900 border-slate-900 text-white w-full rounded-md"
-                >Add to Cart</a
-              >
-            </div>
+            <img :src="product.images[0].url" alt="" />
           </div>
 
           <div
@@ -41,7 +43,7 @@ function gotoProductDetail() {
             <a
               href="shop-item-detail.html"
               class="hover:text-indigo-600 text-xs font-semibold"
-              >Branded T-Shirt</a
+              >{{ product.name }}</a
             >
           </div>
         </div>

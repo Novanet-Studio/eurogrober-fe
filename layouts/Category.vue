@@ -2,7 +2,9 @@
 import mapper from "smapper";
 import { GetCategories } from "~/graphql/queries";
 
-const active = ref("");
+const route = useRoute();
+
+const active = ref(route.params.slug);
 const categories = ref([]);
 const isProductDetail = ref(false);
 
