@@ -8,13 +8,15 @@ const categories = inject("categories");
 const active = inject("active");
 
 watchEffect(() => {
-  const category = categories.value.find(
-    (category) => category.slug === active.value
-  );
-
-  setTimeout(() => {
-    products.value = category.products;
-  }, 500);
+  if (active.value) {
+    const category = categories.value.find(
+      (category) => category.slug === active.value
+    );
+  
+    if (category?.products?.length) {
+      products.value = category.products;
+    }
+  }
 });
 </script>
 

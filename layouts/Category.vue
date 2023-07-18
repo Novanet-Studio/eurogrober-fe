@@ -10,13 +10,24 @@ const isProductDetail = ref(false);
 
 const graphql = useStrapiGraphQL();
 
+const items = ref([
+  {
+    text: 'Home',
+    url: '/',
+  },
+  {
+    text: 'Products',
+  },
+]);
+
 provide("isProductDetail", isProductDetail);
 provide("categories", categories);
 provide("active", active);
 
 const categorySelected = computed(() => {
   return categories.value.find((category) => category.slug === active.value) ?? '';
-})
+});
+
 
 onMounted(async () => {
   try {
@@ -28,37 +39,13 @@ onMounted(async () => {
     console.error("Something went wrong getting products");
   }
 });
-
-const items = ref([
-  {
-    text: 'Home',
-    url: '/',
-  },
-  {
-    text: 'Products',
-  },
-  {
-    text: '',
-  }
-]);
-
-const items2 = computed(() => [
-{
-    text: 'Home',
-    url: '/',
-  },
-  {
-    text: 'Products',
-  },
-])
-
 </script>
 
 <template>
   <ClientOnly class="relative scroll-smooth">
     <AppNavigation />
     <div>
-      <Breadcrumb :items="items2" />
+      <Breadcrumb :items="items" />
       <!-- <section
         class="relative table w-full mt-24 bg-[#D9D9D9] dark:bg-slate-800"
       >
