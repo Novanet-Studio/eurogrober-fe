@@ -10,24 +10,11 @@ const isProductDetail = ref(false);
 
 const graphql = useStrapiGraphQL();
 
-const items = ref([
-  {
-    text: 'Home',
-    url: '/',
-  },
-  {
-    text: 'Products',
-  },
-]);
+const items = ref([]);
 
 provide("isProductDetail", isProductDetail);
 provide("categories", categories);
 provide("active", active);
-
-const categorySelected = computed(() => {
-  return categories.value.find((category) => category.slug === active.value) ?? '';
-});
-
 
 onMounted(async () => {
   try {
@@ -35,9 +22,33 @@ onMounted(async () => {
     const categoriesMapped = mapper(categoriesRes.data).categories;
 
     categories.value = categoriesMapped;
+    items.value.push({
+      text:
+        categoriesMapped?.find(
+          (category) => category.slug === route.params.slug
+        )?.name ?? "",
+    });
   } catch (error) {
     console.error("Something went wrong getting products");
   }
+});
+
+watchEffect(() => {
+  items.value = [
+    {
+      text: "Home",
+      url: "/",
+    },
+    {
+      text: "Products",
+    },
+    {
+      text:
+        categories.value?.find(
+          (category) => category.slug === route.params.slug
+        )?.name ?? "",
+    },
+  ];
 });
 </script>
 
@@ -87,7 +98,8 @@ onMounted(async () => {
 
             <div>
               <span class="text-color-4 block mb-1 text-center lg:text-4xl">
-                We know you do your best at what you do. And only quality materials can help. Check our soft-close hinges
+                We know you do your best at what you do. And only quality
+                materials can help. Check our soft-close hinges
               </span>
             </div>
           </div>
