@@ -29,13 +29,37 @@ onMounted(async () => {
   }
 });
 
+const items = ref([
+  {
+    text: 'Home',
+    url: '/',
+  },
+  {
+    text: 'Products',
+  },
+  {
+    text: '',
+  }
+]);
+
+const items2 = computed(() => [
+{
+    text: 'Home',
+    url: '/',
+  },
+  {
+    text: 'Products',
+  },
+])
+
 </script>
 
 <template>
   <ClientOnly class="relative scroll-smooth">
     <AppNavigation />
     <div>
-      <section
+      <Breadcrumb :items="items2" />
+      <!-- <section
         class="relative table w-full mt-24 bg-[#D9D9D9] dark:bg-slate-800"
       >
         <div class="container relative">
@@ -63,7 +87,7 @@ onMounted(async () => {
             </ul>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <div
         class="shadow-md dark:shadow-gray-800 overflow-hidden m-6 grid md:grid-cols-2 lg:mx-16"
