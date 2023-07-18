@@ -57,36 +57,6 @@ watchEffect(() => {
     <AppNavigation />
     <div>
       <Breadcrumb :items="items" />
-      <!-- <section
-        class="relative table w-full mt-24 bg-[#D9D9D9] dark:bg-slate-800"
-      >
-        <div class="container relative">
-          <div class="relative py-2 lg:py-4">
-            <ul class="breadcrumb tracking-[0.5px] mb-0 inline-block">
-              <li
-                class="inline text-[12px] lg:text-base text-color-4 duration-500 ease-in-out hover:text-color-4"
-              >
-                <NuxtLink to="/">Home</NuxtLink>
-              </li>
-              <li class="inline pl-1 text-color-4">/</li>
-              <li
-                class="inline text-[12px] lg:text-base text-color-4"
-                aria-current="page"
-              >
-                Category
-              </li>
-              <li class="inline pr-1 text-color-4">/</li>
-              <li
-                class="inline text-[12px] lg:text-base font-extrabold text-color-4"
-                aria-current="page"
-              >
-                {{ categorySelected.name }}
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section> -->
-
       <div
         class="shadow-md dark:shadow-gray-800 overflow-hidden m-6 grid md:grid-cols-2 lg:mx-16"
       >
