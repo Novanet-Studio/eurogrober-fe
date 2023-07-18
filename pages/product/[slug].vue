@@ -1,11 +1,14 @@
 <script setup>
 import mapper from "smapper";
+import MarkdownIt from "markdown-it";
 import { PhCaretUp, PhCaretDown } from "@phosphor-icons/vue";
 import { GetProductBySlug } from "~/graphql/queries";
 
 definePageMeta({
   layout: "category",
 });
+
+const markdown = new MarkdownIt();
 
 const graphql = useStrapiGraphQL();
 const thumbsSwiper = ref(null);
@@ -101,17 +104,7 @@ onMounted(async () => {
             </SwiperSlide>
           </Swiper>
         </div>
-        <div>
-          <ul
-            class="text-[12px] px-2 mt-4 md:text-base list-disc md:px-8 lg:mt-8"
-          >
-            <li>Element 1</li>
-            <li>Element 2</li>
-            <li>Element 3</li>
-            <li>Element 4</li>
-            <li>Element 5</li>
-          </ul>
-        </div>
+        <div v-html="markdown.render(product?.description ?? '')" />
       </div>
     </div>
     <div class="grid grid-cols-2 gap-8 mt-12 md:grid-cols-4">

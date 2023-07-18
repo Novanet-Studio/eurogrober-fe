@@ -11,6 +11,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@rollup/plugin-graphql": "^2.0.3",
+    "@types/markdown-it": "^12.2.3",
     "@types/node": "^18",
     "nuxt": "^3.6.2"
   },
@@ -22,6 +23,7 @@
     "@phosphor-icons/vue": "^2.1.4",
     "@tailwindcss/forms": "^0.5.3",
     "graphql": "^16.7.1",
+    "markdown-it": "^13.0.1",
     "nuxt-lodash": "^2.5.0",
     "nuxt-swiper": "^1.1.1",
     "sass": "^1.63.6",
