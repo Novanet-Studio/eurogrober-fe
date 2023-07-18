@@ -1,16 +1,22 @@
-<script setup lang="ts">
+<script setup>
+import mapper from "smapper";
 import { PhCaretUp, PhCaretDown } from "@phosphor-icons/vue";
+import { GetProductBySlug } from "~/graphql/queries";
 
 definePageMeta({
   layout: "category",
 });
 
+const graphql = useStrapiGraphQL();
 const thumbsSwiper = ref(null);
-const isProductDetail = inject("isProductDetail") as Ref<boolean>;
+const isProductDetail = inject("isProductDetail");
+const product = ref({});
+const route = useRoute();
+const { slug } = route.params;
 
 isProductDetail.value = true;
 
-const setThumbsSwiper = (swiper: any) => {
+const setThumbsSwiper = (swiper) => {
   thumbsSwiper.value = swiper;
 };
 
@@ -37,6 +43,20 @@ const sizes = [
   "22” (55 cm) REF 5503F",
   "24” (60 cm) REF 6003F",
 ];
+
+onMounted(async () => {
+  try {
+    const result = await graphql(GetProductBySlug, {
+      slug,
+    });
+
+    const [mapped] = mapper(result.data).products;
+
+    product.value = mapped;
+  } catch (error) {
+    console.log("An error occurred while trying to get product");
+  }
+});
 </script>
 
 <template>
@@ -60,8 +80,8 @@ const sizes = [
           direction="vertical"
           class="mySwiper"
         >
-          <SwiperSlide class="relative" v-for="(slide, i) in slides" :key="i">
-            <img :src="slide" :alt="slide" />
+          <SwiperSlide class="relative" v-for="(image, i) in product.images" :key="i">
+            <img :src="image.url" :alt="image.alternativeUrl" />
           </SwiperSlide>
         </Swiper>
         <button class="slide__next mt-4"><PhCaretDown /></button>
@@ -80,15 +100,15 @@ const sizes = [
             class="mySwiper2 h-60 md:h-96 w-64 md:w-[35.5rem] mt-8 overflow-auto lg:w-[40rem]"
             :modules="[SwiperNavigation, SwiperThumbs, SwiperMousewheel]"
           >
-            <SwiperSlide class="" v-for="(slide, i) in slides" :key="i">
-              <img :src="slide" :alt="slide" />
+            <SwiperSlide class="" v-for="(image, i) in product.images" :key="i">
+              <img :src="image.url" :alt="image.alternativeUrl" />
               <div
                 class="mt-4 absolute -top-9 left-0 w-11/12 bg-red-600 px-4 py-1 text-white rounded-r-full text-sm"
               >
                 <a
                   href="shop-item-detail.html"
                   class="hover:text-indigo-600 text-xs font-semibold"
-                  >Branded T-Shirt</a
+                  >{{ product.name }}</a
                 >
               </div>
             </SwiperSlide>

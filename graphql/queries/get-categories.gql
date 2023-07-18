@@ -10,6 +10,8 @@ query GetCategories {
             id
             attributes{
               name
+              description
+              slug
               images{
                 data {
                   id
