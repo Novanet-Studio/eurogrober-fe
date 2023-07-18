@@ -4,7 +4,7 @@ import { GetCategories } from "~/graphql/queries";
 
 const route = useRoute();
 
-const active = ref(route.params.slug);
+const active = ref("");
 const categories = ref([]);
 const isProductDetail = ref(false);
 
@@ -28,6 +28,7 @@ onMounted(async () => {
           (category) => category.slug === route.params.slug
         )?.name ?? "",
     });
+    active.value = route.params.slug;
   } catch (error) {
     console.error("Something went wrong getting products");
   }
