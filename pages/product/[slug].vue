@@ -16,7 +16,7 @@ const route = useRoute();
 const thumbsSwiper = ref(null);
 const product = ref({});
 
-const items = inject('items');
+const productItem = inject("product");
 const isProductDetail = inject("isProductDetail");
 const { slug } = route.params;
 
@@ -45,10 +45,7 @@ onMounted(async () => {
 
     const [mapped] = mapper(result.data).products;
     product.value = mapped;
-
-    items.value.push({
-      text: mapped?.name ?? "",
-    });
+    productItem.value = mapped;
   } catch (error) {
     console.log("An error occurred while trying to get product");
   }
@@ -76,7 +73,11 @@ onMounted(async () => {
           direction="vertical"
           class="mySwiper"
         >
-          <SwiperSlide class="relative" v-for="(image, i) in product?.images" :key="i">
+          <SwiperSlide
+            class="relative"
+            v-for="(image, i) in product?.images"
+            :key="i"
+          >
             <img :src="image.url" :alt="image.alternativeUrl" />
           </SwiperSlide>
         </Swiper>

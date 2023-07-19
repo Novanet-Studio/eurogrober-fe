@@ -4,10 +4,11 @@ import { GetCategories } from "~/graphql/queries";
 
 const route = useRoute();
 
-const active = ref("");
+const isProductDetail = ref(false);
 const categories = ref([]);
 const category = ref({});
-const isProductDetail = ref(false);
+const product = ref({});
+const active = ref("");
 
 const graphql = useStrapiGraphQL();
 
@@ -16,13 +17,14 @@ const items = ref([]);
 provide("isProductDetail", isProductDetail);
 provide("categories", categories);
 provide("category", category);
+provide("product", product);
 provide("active", active);
 provide("items", items);
 
 watchEffect(() => {
-  const { name, slug } = category.value; 
+  const { name, slug } = category.value;
 
-  items.value = [
+  const defaultItems = [
     {
       text: "Home",
       url: "/",
@@ -31,13 +33,22 @@ watchEffect(() => {
       text: "Products",
     },
     {
-      text: name ?? '',
-      url: `/category/${slug}`
+      text: name ?? "",
+      url: `/category/${slug}`,
     },
   ];
 
-  console.log(route.path);
-  console.log(items.value);
+  if (route.path.includes('product')) {
+    items.value = [
+      ...defaultItems,
+      {
+        text: product.value.name,
+      }
+    ];
+    return;
+  }
+
+  items.value = defaultItems;
 });
 
 onMounted(async () => {
