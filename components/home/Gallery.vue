@@ -18,7 +18,7 @@
           class="relative py-24 table w-full shadow-md overflow-hidden md:py-48 lg:py-80"
         >
           <div
-            class="absolute inset-0 bg-[url('/images/app/bg.jpg')] bg-no-repeat md:bg-left bg-center bg-cover"
+            class="absolute inset-0 bg-[url('/images/design/gallery.jpg')] bg-no-repeat md:bg-left bg-center bg-cover"
           />
           <div
             class="absolute h-20 inset-0 !bottom-full top-[calc(100%-5rem)] bg-black/70 backdrop-blur-[3px] md:h-36 md:top-[calc(100%-9rem)] lg:h-52 lg:top-[calc(100%-13rem)]"
