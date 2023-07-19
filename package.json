@@ -13,7 +13,7 @@
     "@rollup/plugin-graphql": "^2.0.3",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^18",
-    "nuxt": "^3.6.2"
+    "nuxt": "^3.6.3"
   },
   "dependencies": {
     "@kevinmarrec/nuxt-pwa": "^0.17.0",
