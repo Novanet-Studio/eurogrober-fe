@@ -2,9 +2,10 @@
 const isOpen = inject("isOpen") as Ref<boolean>;
 
 const root = ref();
-// const indicator = ref();
+const route = useRoute();
+const lock = ref(false);
 
-const active = ref();
+const active = ref(0);
 const items = [
   {
     name: "Company",
@@ -27,9 +28,9 @@ const items = [
 const $items = ref<any>([]);
 
 const styles = reactive({
-  x: 0,
+  x: 2000, // Show from right side
   y: 0,
-  width: 0,
+  width: 120,
   height: 0,
 });
 
@@ -56,6 +57,8 @@ function handleScroll() {
   const GALLERY = 3521;
   const CONTACT = 4919;
 
+  if (lock.value) return;
+
   if (window.scrollY < COMPANY || window.scrollY < PRODUCTS) {
     active.value = 0;
   } else if (window.scrollY <= GALLERY) {
@@ -69,13 +72,27 @@ function handleScroll() {
 
 watch(active, animate);
 
-onMounted(() => {
+watchEffect(() => {
+  if (route.path.includes('category') || route.path.includes('product')) {
+    lock.value = true;
+    setTimeout(() => {
+      active.value = 1;
+    }, 1000);
+
+    return;
+  }
+
+  lock.value = false;
+})
+
+onMounted(() => {  
   window.addEventListener("scroll", handleScroll);
 
   return () => {
     window.removeEventListener("scroll", handleScroll);
   };
 });
+
 </script>
 
 <template>
