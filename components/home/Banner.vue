@@ -3,7 +3,7 @@
     <div class="container-fluid relative">
       <div class="relative py-48 table w-full shadow-md overflow-hidden">
         <div
-          class="absolute inset-0 bg-[url('/images/shop/bg.jpg')] bg-no-repeat md:bg-left bg-center bg-cover"
+          class="absolute inset-0 bg-[url('/images/design/banner.jpg')] bg-no-repeat md:bg-left bg-center bg-cover"
         ></div>
         <!-- backdrop-blur-[2px] hover:backdrop-blur-0 -->
         <div class="absolute inset-0 bg-slate-950/30"></div>
