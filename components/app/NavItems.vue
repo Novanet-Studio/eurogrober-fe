@@ -5,7 +5,7 @@ const root = ref();
 const route = useRoute();
 const lock = ref(false);
 
-const active = ref(0);
+const active = ref();
 const items = [
   {
     name: "Company",
@@ -33,6 +33,8 @@ const styles = reactive({
   width: 120,
   height: 0,
 });
+
+const INDICATOR_ANIMATION_DELAY = 500;
 
 const elementsRef = (el: any) => $items.value.push(el);
 
@@ -77,7 +79,7 @@ watchEffect(() => {
     lock.value = true;
     setTimeout(() => {
       active.value = 1;
-    }, 1000);
+    }, INDICATOR_ANIMATION_DELAY);
 
     return;
   }
