@@ -11,10 +11,13 @@ definePageMeta({
 const markdown = new MarkdownIt();
 
 const graphql = useStrapiGraphQL();
-const thumbsSwiper = ref(null);
-const isProductDetail = inject("isProductDetail");
-const product = ref({});
 const route = useRoute();
+
+const thumbsSwiper = ref(null);
+const product = ref({});
+
+const items = inject('items');
+const isProductDetail = inject("isProductDetail");
 const { slug } = route.params;
 
 isProductDetail.value = true;
@@ -41,8 +44,11 @@ onMounted(async () => {
     });
 
     const [mapped] = mapper(result.data).products;
-
     product.value = mapped;
+
+    items.value.push({
+      text: mapped?.name ?? "",
+    });
   } catch (error) {
     console.log("An error occurred while trying to get product");
   }

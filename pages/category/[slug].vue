@@ -6,13 +6,16 @@ definePageMeta({
 const products = ref([]);
 const categories = inject("categories");
 const active = inject("active");
+const categoryItem = inject("category");
 
 watchEffect(() => {
   if (active.value) {
     const category = categories.value.find(
       (category) => category.slug === active.value
     );
-  
+
+    categoryItem.value = category;
+
     if (category?.products?.length) {
       products.value = category.products;
     }
@@ -26,12 +29,7 @@ watchEffect(() => {
       class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 mt-8 gap-[30px]"
     >
       <NuxtLink
-        :to="{
-          path: `/product/${product.slug}`,
-          state: {
-            id: product.id,
-          }
-        }"
+        :to="`/product/${product.slug}`"
         v-for="(product, i) in products"
         :key="i"
       >

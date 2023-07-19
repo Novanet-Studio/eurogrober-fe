@@ -1,10 +1,13 @@
 <script setup>
 const router = useRouter();
 const categories = inject('categories');
+const category = inject('category');
 const active = inject('active');
 
 function changeCategory(slug) {
-  active.value = categories.value.find((category) => category.slug === slug).slug;
+  const found = categories.value.find((category) => category.slug === slug)
+  active.value = found.slug;
+  category.value = found;
   router.replace(`/category/${slug}`);
 }
 </script>

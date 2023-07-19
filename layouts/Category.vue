@@ -6,6 +6,7 @@ const route = useRoute();
 
 const active = ref("");
 const categories = ref([]);
+const category = ref({});
 const isProductDetail = ref(false);
 
 const graphql = useStrapiGraphQL();
@@ -14,27 +15,13 @@ const items = ref([]);
 
 provide("isProductDetail", isProductDetail);
 provide("categories", categories);
+provide("category", category);
 provide("active", active);
-
-onMounted(async () => {
-  try {
-    const categoriesRes = await graphql(GetCategories);
-    const categoriesMapped = mapper(categoriesRes.data).categories;
-
-    categories.value = categoriesMapped;
-    items.value.push({
-      text:
-        categoriesMapped?.find(
-          (category) => category.slug === route.params.slug
-        )?.name ?? "",
-    });
-    active.value = route.params.slug;
-  } catch (error) {
-    console.error("Something went wrong getting products");
-  }
-});
+provide("items", items);
 
 watchEffect(() => {
+  const { name, slug } = category.value; 
+
   items.value = [
     {
       text: "Home",
@@ -44,12 +31,25 @@ watchEffect(() => {
       text: "Products",
     },
     {
-      text:
-        categories.value?.find(
-          (category) => category.slug === route.params.slug
-        )?.name ?? "",
+      text: name ?? '',
+      url: `/category/${slug}`
     },
   ];
+
+  console.log(route.path);
+  console.log(items.value);
+});
+
+onMounted(async () => {
+  try {
+    const categoriesRes = await graphql(GetCategories);
+    const categoriesMapped = mapper(categoriesRes.data).categories;
+
+    categories.value = categoriesMapped;
+    active.value = route.params.slug;
+  } catch (error) {
+    console.error("Something went wrong getting products");
+  }
 });
 </script>
 
