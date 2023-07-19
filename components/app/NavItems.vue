@@ -56,8 +56,8 @@ function animate() {
 function handleScroll() {
   const COMPANY = 617;
   const PRODUCTS = 1169;
-  const GALLERY = 3521;
-  const CONTACT = 4919;
+  const GALLERY = 2655;
+  const CONTACT = 4091;
 
   if (lock.value) return;
 
@@ -67,7 +67,7 @@ function handleScroll() {
     active.value = 1;
   } else if (window.scrollY < CONTACT) {
     active.value = 2;
-  } else if (window.scrollY >= CONTACT) {
+  } else if (window.scrollY > GALLERY) {
     active.value = 3;
   }
 }
