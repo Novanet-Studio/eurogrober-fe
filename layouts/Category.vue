@@ -75,13 +75,13 @@ onMounted(async () => {
         <div class="lg:flex p-6 lg:p-0 relative rounded-md lg:items-center">
           <div class="pt-1 lg:p-6 text-center space-y-4">
             <h3 class="text-xl text-color-1 font-extrabold lg:text-5xl">
-              {{ category.name }}
+              {{ category?.name }}
             </h3>
 
             <div>
               <span class="text-color-4 block mb-1 text-center lg:text-4xl">
                 We know you do your best at what you do. And only quality
-                materials can help. Check our <b>{{ category.name.toLowerCase() }}</b>
+                materials can help. Check our <b>{{ category?.name?.toLowerCase() }}</b>
               </span>
             </div>
           </div>
@@ -91,6 +91,7 @@ onMounted(async () => {
             class="h-42 lg:h-80 w-full bg-center object-contain object-top"
             :src="category?.products[0]?.images[0]?.url ?? '/images/shop/bg.jpg'"
             alt=""
+            v-if="category?.products?.length"
           />
         </div>
       </div>

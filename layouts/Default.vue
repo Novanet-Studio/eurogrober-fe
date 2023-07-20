@@ -1,9 +1,9 @@
 <template>
-  <div class="relative scroll-smooth">
+  <ClientOnly>
     <AppNavigation />
     <slot />
     <AppFooter />
     <Switcher />
     <BackTop />
-  </div>
+  </ClientOnly>
 </template>
