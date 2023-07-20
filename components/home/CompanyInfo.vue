@@ -40,20 +40,16 @@ const info = [
       >
         Company information
       </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px] lg:grid-cols-4">
-        <div class="text-center px-6" v-for="(item, i) in info" :key="i">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px] lg:grid-cols-2 place-items-start">
+        <div class="flex items-center text-start" v-for="(item, i) in info" :key="i">
           <div
-            class="w-20 h-20 bg-color-1/5 text-color-1 rounded-xl text-3xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800 mx-auto"
+            class="w-14 h-14 bg-color-1 text-white rounded-full text-3xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800 mx-auto"
           >
             <component :is="item.icon" />
           </div>
-
-          <div class="content mt-7">
-            <h5 class="text-xl font-semibold">{{ item.title }}</h5>
-            <p class="text-slate-400 mt-3">
-              {{ item.content }}
-            </p>
-          </div>
+          <p class="text-color-4 text-sm ml-4">
+            {{ item.content }}
+          </p>
         </div>
       </div>
     </div>
