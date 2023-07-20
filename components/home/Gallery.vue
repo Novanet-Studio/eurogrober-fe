@@ -4,7 +4,7 @@
       <header-title title="Gallery" subtitle="Kitchen possibilities" />
       <div class="flex justify-center">
         <p
-          class="text-color-4 px-6 text-center md:max-w-md lg:max-w-6xl lg:text-3xl lg:mb-6"
+          class="text-color-4 px-6 text-sm text-center md:max-w-md lg:max-w-6xl lg:text-3xl lg:mb-6"
         >
           We not only offer products. We offer complete solutions for kitchens,
           with the best products, cutting-edge technological and durable

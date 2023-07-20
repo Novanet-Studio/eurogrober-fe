@@ -28,20 +28,20 @@ const icons = [
 <template>
   <section
     id="contact"
-    class="relative md:py-24 py-16 pb-0 overflow-hidden bg-color-5/25 lg:py-16"
+    class="relative md:py-24 py-16 pt-2 pb-0 overflow-hidden bg-[#D9D9D933] lg:py-16"
   >
     <div class="container relative">
       <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
-        <div class="lg:col-span-5 md:col-span-6">
+        <!-- <div class="lg:col-span-5 md:col-span-6">
           <div class="lg:me-8">
             <div class="relative">
-              <!-- <img src="assets/images/feature.png" alt="" /> -->
-              <!-- <div
+              <img src="assets/images/feature.png" alt="" />
+              <div
                 class="overflow-hidden absolute h-[512px] w-[512px] bg-indigo-600/5 top-1/4 start-0 end-0 align-middle -z-1 rounded-full"
-              ></div> -->
+              ></div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="md:col-span-12">
           <div class="lg:ms-5">

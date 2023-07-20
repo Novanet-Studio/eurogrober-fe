@@ -26,7 +26,7 @@ const companyText = [
 <template>
   <section id="company" class="container relative md:mt-24 mt-16 lg:mb-28">
     <header-title title="Company" subtitle="Kitchen hardware at hand!" />
-    <div class="grid grid-cols-1 mt-4 gap-[30px] md:grid-cols-3">
+    <div class="grid grid-cols-1 mx-8 mt-4 gap-[30px] md:grid-cols-3">
       <div
         class="group relative lg:px-10 mt-4 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center"
         v-for="(item, index) in companyText"

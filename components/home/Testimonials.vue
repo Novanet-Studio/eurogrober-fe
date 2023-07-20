@@ -42,7 +42,7 @@ const testimonials = [
             >
               <SwiperSlide v-for="(item, index) in testimonials" :key="index">
                 <div
-                  class="lg:flex p-6 lg:p-0 relative rounded-md shadow dark:shadow-gray-800 overflow-hidden m-2 bg-[url(/images/design/bg-image.jpg)] bg-center bg-cover bg-opacity-80"
+                  class="lg:flex p-6 lg:p-0 relative rounded-md dark:shadow-gray-800 overflow-hidden m-2 bg-[url(/images/design/bg-image.jpg)] bg-center bg-cover bg-opacity-80"
                 >
                   <div class="pt-6 lg:p-6 text-center lg:text-start space-y-4">
                     <p class="text-base text-slate-400 italic">

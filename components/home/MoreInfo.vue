@@ -1,5 +1,5 @@
 <template>
-  <section class="relative md:py-10 py-12">
+  <section class="relative mt-10 md:py-10 py-12">
     <div class="container relative">
       <div class="grid grid-cols-1 pb-8 text-center">
         <h2
