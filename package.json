@@ -27,6 +27,8 @@
     "nuxt-lodash": "^2.5.0",
     "nuxt-swiper": "^1.1.1",
     "sass": "^1.64.0",
-    "smapper": "^0.0.9"
+    "smapper": "^0.0.9",
+    "vee-validate": "^4.10.7",
+    "yup": "^1.2.0"
   }
 }

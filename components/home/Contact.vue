@@ -1,13 +1,53 @@
 <script setup lang="ts">
+import * as yup from 'yup';
+import { useForm } from 'vee-validate';
 import {
   PhUser,
   PhEnvelope,
-  PhBook,
   PhChatCircleText,
+  PhPhone,
   PhInstagramLogo as PhInstagram,
   PhFacebookLogo as PHFacebook,
   PhWhatsappLogo as PhWhatsapp,
 } from "@phosphor-icons/vue";
+
+type Form = {
+  name: string;
+  surname: string;
+  phone: string;
+  email: string;
+  message: string;
+};
+
+// TODO: improve regex for phone
+const schema = yup.object({
+  name: yup.string().required('Este campo es requerido'),
+  surname: yup.string().required('Este campo es requerido'),
+  phone: yup.string().required('Este campo es requerido'),
+  email: yup.string().email().required('Este campo es requerido'),
+  message: yup.string().required('Este campo es requerido'),
+});
+
+const {
+  useFieldModel,
+  errors: _,
+  handleSubmit,
+} = useForm<Form>({
+  validationSchema: schema,
+});
+
+const [name, surname, phone, email, message] = useFieldModel([
+  'name',
+  'surname',
+  'phone',
+  'email',
+  'message',
+]);
+
+const encode = (data: any) =>
+  Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
 
 const icons = [
   {
@@ -23,6 +63,25 @@ const icons = [
     link: "",
   },
 ];
+
+const onSubmit = handleSubmit(async (data) => {
+  try {
+    await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'contacto',
+        ...data,
+      }),
+    });
+    // router.push('/gracias');
+  } catch (error: any) {
+    console.log(
+      'Hubo un error al intentar enviar el formulario: ',
+      error.message
+    );
+  }
+});
 </script>
 
 <template>
@@ -32,17 +91,6 @@ const icons = [
   >
     <div class="container relative">
       <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
-        <!-- <div class="lg:col-span-5 md:col-span-6">
-          <div class="lg:me-8">
-            <div class="relative">
-              <img src="assets/images/feature.png" alt="" />
-              <div
-                class="overflow-hidden absolute h-[512px] w-[512px] bg-indigo-600/5 top-1/4 start-0 end-0 align-middle -z-1 rounded-full"
-              ></div>
-            </div>
-          </div>
-        </div> -->
-
         <div class="md:col-span-12">
           <div class="lg:ms-5">
             <div class="dark:bg-slate-900 rounded-md dark:shadow-gray-800 p-6">
@@ -53,10 +101,11 @@ const icons = [
               </h3>
 
               <form
+                @submit.prenvent="onSubmit"
+                name="contact"
                 method="post"
-                name="myForm"
-                id="myForm"
-                onsubmit="return validateForm()"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
               >
                 <p class="mb-0" id="error-msg"></p>
                 <div id="simple-msg"></div>
@@ -71,6 +120,7 @@ const icons = [
                       <div class="form-icon relative mt-2">
                         <ph-user class="w-4 h-4 absolute top-3 start-4" />
                         <input
+                          v-model="name"
                           name="name"
                           id="name"
                           type="text"
@@ -83,18 +133,36 @@ const icons = [
 
                   <div class="md:col-span-3 mb-5 lg:col-span-6">
                     <div class="text-start">
-                      <label for="email" class="font-semibold text-color-4"
-                        >Your Email:</label
+                      <label for="name" class="font-semibold text-color-4"
+                        >Your Surname:</label
                       >
                       <div class="form-icon relative mt-2">
-                        <ph-envelope class="w-4 h-4 absolute top-3 start-4" />
-
+                        <ph-user class="w-4 h-4 absolute top-3 start-4" />
                         <input
-                          name="email"
-                          id="email"
-                          type="email"
+                          v-model="surname"
+                          name="surname"
+                          id="surname"
+                          type="text"
                           class="form-input ps-11 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-color-2 dark:border-gray-800 dark:focus:border-color-2 focus:ring-0"
-                          placeholder="Email :"
+                          placeholder="Surname :"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="md:col-span-3 mb-5 lg:col-span-6">
+                    <div class="text-start">
+                      <label for="subject" class="font-semibold text-color-4"
+                        >Your Phone:</label
+                      >
+                      <div class="form-icon relative mt-2">
+                        <ph-phone class="w-4 h-4 absolute top-3 start-4" />
+                        <input
+                          v-model="phone"
+                          name="phone"
+                          id="phone"
+                          class="form-input ps-11 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-color-2 dark:border-gray-800 dark:focus:border-color-2 focus:ring-0"
+                          placeholder="Phone :"
                         />
                       </div>
                     </div>
@@ -104,16 +172,19 @@ const icons = [
                 <div class="grid grid-cols-1">
                   <div class="mb-5">
                     <div class="text-start">
-                      <label for="subject" class="font-semibold text-color-4"
-                        >Your Question:</label
+                      <label for="email" class="font-semibold text-color-4"
+                        >Your Email:</label
                       >
                       <div class="form-icon relative mt-2">
-                        <ph-book class="w-4 h-4 absolute top-3 start-4" />
+                        <ph-envelope class="w-4 h-4 absolute top-3 start-4" />
+
                         <input
-                          name="subject"
-                          id="subject"
+                          v-model="email"
+                          name="email"
+                          id="email"
+                          type="email"
                           class="form-input ps-11 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-color-2 dark:border-gray-800 dark:focus:border-color-2 focus:ring-0"
-                          placeholder="Subject :"
+                          placeholder="Email :"
                         />
                       </div>
                     </div>
@@ -121,7 +192,7 @@ const icons = [
 
                   <div class="mb-5">
                     <div class="text-start">
-                      <label for="comments" class="font-semibold text-color-4"
+                      <label for="message" class="font-semibold text-color-4"
                         >Your Comment:</label
                       >
                       <div class="form-icon relative mt-2">
@@ -130,8 +201,9 @@ const icons = [
                         />
 
                         <textarea
-                          name="comments"
-                          id="comments"
+                          v-model="message"
+                          name="message"
+                          id="message"
                           class="form-input ps-11 w-full py-2 px-3 h-28 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-color-2 dark:border-gray-800 dark:focus:border-color-2 focus:ring-0"
                           placeholder="Message :"
                         ></textarea>
@@ -144,7 +216,7 @@ const icons = [
                     type="submit"
                     id="submit"
                     name="send"
-                    class="btn bg-color-1 font-bold hover:bg-orange-600 border-color-2 hover:border-orange-600 text-white rounded-full text-sm justify-center flex items-center md:py-3 md:px-12"
+                    class="btn bg-color-1 font-bold px-8 hover:bg-orange-600 border-color-2 hover:border-orange-600 text-white rounded-full text-sm justify-center flex items-center md:py-3 md:px-12"
                   >
                     Send
                   </button>
