@@ -4,6 +4,7 @@ query GetCategories {
       id
       attributes {
         name
+        description
         slug
         products {
           data {
