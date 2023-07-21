@@ -26,16 +26,16 @@ const setThumbsSwiper = (swiper) => {
   thumbsSwiper.value = swiper;
 };
 
-const sizes = [
-  "10” (25 cm) REF 2503F",
-  "12” (30 cm) REF 3003F",
-  "14” (35 cm) REF 3503F",
-  "16” (40 cm) REF 4003F",
-  "18” (45 cm) REF 4503F",
-  "20” (50 cm) REF 5003F",
-  "22” (55 cm) REF 5503F",
-  "24” (60 cm) REF 6003F",
-];
+// const sizes = [
+//   "10” (25 cm) REF 2503F",
+//   "12” (30 cm) REF 3003F",
+//   "14” (35 cm) REF 3503F",
+//   "16” (40 cm) REF 4003F",
+//   "18” (45 cm) REF 4503F",
+//   "20” (50 cm) REF 5003F",
+//   "22” (55 cm) REF 5503F",
+//   "24” (60 cm) REF 6003F",
+// ];
 
 onMounted(async () => {
   try {
@@ -54,59 +54,34 @@ onMounted(async () => {
 
 <template>
   <section class="container relative mt-24 mb-10">
-    <div
-      class="grid grid-cols-[4rem_1fr] gap-3 md:grid-cols-[7rem_1fr] md:gap-8"
-    >
+    <div class="grid grid-cols-[4rem_1fr] gap-3 md:grid-cols-[7rem_1fr] md:gap-8">
       <div class="h-full flex flex-col items-center">
-        <button class="slide__prev mb-4"><PhCaretUp /></button>
-        <Swiper
-          :space-between="10"
-          :slides-per-view="4"
-          @swiper="setThumbsSwiper"
-          free-mode
-          :navigation="{
-            nextEl: '.slide__next',
-            prevEl: '.slide__prev',
-          }"
-          watch-slides-progress
-          :modules="[SwiperFreeMode, SwiperNavigation]"
-          direction="vertical"
-          class="mySwiper"
-        >
-          <SwiperSlide
-            class="relative"
-            v-for="(image, i) in product?.images"
-            :key="i"
-          >
+        <button class="slide__prev mb-4">
+          <PhCaretUp />
+        </button>
+        <Swiper :space-between="10" :slides-per-view="4" @swiper="setThumbsSwiper" free-mode :navigation="{
+          nextEl: '.slide__next',
+          prevEl: '.slide__prev',
+        }" watch-slides-progress :modules="[SwiperFreeMode, SwiperNavigation]" direction="vertical" class="mySwiper">
+          <SwiperSlide class="relative" v-for="(image, i) in product?.images" :key="i">
             <img :src="image.url" :alt="image.alternativeUrl" />
           </SwiperSlide>
         </Swiper>
-        <button class="slide__next mt-4"><PhCaretDown /></button>
+        <button class="slide__next mt-4">
+          <PhCaretDown />
+        </button>
       </div>
       <div class="flex flex-col lg:flex-row">
         <div class="relative">
-          <Swiper
-            :space-between="32"
-            :slides-per-view="1"
-            :thumbs="{ swiper: thumbsSwiper }"
-            mousewheel
-            :navigation="{
-              nextEl: '.slide__next',
-              prevEl: '.slide__prev',
-            }"
-            class="mySwiper2 h-60 md:h-96 w-64 md:w-[35.5rem] mt-8 overflow-auto lg:w-[40rem]"
-            :modules="[SwiperNavigation, SwiperThumbs, SwiperMousewheel]"
-          >
+          <Swiper :space-between="32" :slides-per-view="1" :thumbs="{ swiper: thumbsSwiper }" mousewheel :navigation="{
+            nextEl: '.slide__next',
+            prevEl: '.slide__prev',
+          }" class="mySwiper2 h-60 md:h-96 w-64 md:w-[35.5rem] mt-8 overflow-auto lg:w-[40rem]"
+            :modules="[SwiperNavigation, SwiperThumbs, SwiperMousewheel]">
             <SwiperSlide class="" v-for="(image, i) in product.images" :key="i">
               <img :src="image.url" :alt="image.alternativeUrl" />
-              <div
-                class="mt-4 absolute -top-9 left-0 w-11/12 bg-red-600 px-4 py-1 text-white rounded-r-full text-sm"
-              >
-                <a
-                  href="shop-item-detail.html"
-                  class="hover:text-indigo-600 text-xs font-semibold"
-                  >{{ product.name }}</a
-                >
+              <div class="mt-4 absolute -top-9 left-0 w-11/12 bg-red-600 px-4 py-1 text-white rounded-r-full text-sm">
+                <a href="shop-item-detail.html" class="hover:text-indigo-600 text-xs font-semibold">{{ product.name }}</a>
               </div>
             </SwiperSlide>
           </Swiper>
@@ -114,7 +89,7 @@ onMounted(async () => {
         <div v-html="markdown.render(product?.description ?? '')" />
       </div>
     </div>
-    <div class="grid grid-cols-2 gap-8 mt-12 md:grid-cols-4">
+    <!-- <div class="grid grid-cols-2 gap-8 mt-12 md:grid-cols-4">
       <div
         class="text-[10px] p-6 text-color-4 font-bold border border-color-5 relative"
         v-for="(size, i) in sizes"
@@ -130,7 +105,7 @@ onMounted(async () => {
           </button>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
