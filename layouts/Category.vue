@@ -98,7 +98,7 @@ onMounted(async () => {
     </div>
     <slot />
     <AppFooter />
-    <Switcher />
+    <!-- <Switcher /> -->
     <BackTop />
   </ClientOnly>
 </template>
