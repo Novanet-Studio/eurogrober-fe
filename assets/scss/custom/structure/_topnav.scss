@@ -22,7 +22,7 @@
       }
       span {
         transition: transform 0.5s ease;
-        @apply h-[2px] w-full bg-black dark:bg-white block mb-[5px];
+        @apply h-[2px] w-full bg-white block mb-[5px];
         &:last-child {
           @apply mb-0;
         }
@@ -451,7 +451,7 @@
     }
     .menu-extras {
       .menu-item {
-        @apply border-gray-200 dark:border-gray-700;
+        @apply border-gray-200 dark:border-gray-700 bg-color-1 w-12 h-12 rounded-full flex justify-center items-center pr-2;
       }
     }
     .navbar-header {
@@ -533,7 +533,7 @@
     }
   }
   .navbar-toggle {
-    @apply block;
+    @apply block p-2 bg-color-1;
   }
 }
 
