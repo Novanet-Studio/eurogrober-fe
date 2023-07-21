@@ -3,15 +3,15 @@
     <div class="container-fluid relative">
       <div class="relative py-48 table w-full shadow-md overflow-hidden">
         <div
-          class="absolute inset-0 bg-[url('/images/design/banner.jpg')] bg-no-repeat md:bg-left bg-center bg-cover"
+          class="absolute -inset-2 bg-[url('/images/design/banner.jpg')] bg-no-repeat md:bg-left bg-center bg-cover"
         ></div>
         <!-- backdrop-blur-[2px] hover:backdrop-blur-0 -->
         <div class="absolute inset-0 bg-slate-950/30"></div>
         <div class="container relative">
-          <div class="grid grid-cols-1">
+          <div class="grid grid-cols-1 mb-12">
             <div class="text-center md:text-start">
               <h1
-                class="font-extrabold text-color-1 leading-normal mb-2 text-xl md:text-3xl lg:text-5xl lg:leading-normal"
+                class="font-extrabold text-color-1 mb-2 text-2xl md:text-3xl lg:text-5xl lg:leading-normal"
               >
                 Kitchen hardware at hand!
               </h1>
