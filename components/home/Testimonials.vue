@@ -97,4 +97,8 @@ const testimonials = [
   --swiper-navigation-size: 2rem;
   --swiper-navigation-color: #e92946;
 }
+
+:global(.swiper-pagination-bullet-active) {
+  --swiper-pagination-color: #e92946;
+}
 </style>
