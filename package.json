@@ -9,15 +9,15 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "0.7.0",
     "@rollup/plugin-graphql": "^2.0.3",
     "@types/markdown-it": "^12.2.3",
-    "@types/node": "^18",
-    "nuxt": "^3.6.3"
+    "@types/node": "^20.4.2",
+    "nuxt": "^3.6.5"
   },
   "dependencies": {
     "@kevinmarrec/nuxt-pwa": "^0.17.0",
-    "@nuxt/image-edge": "^1.0.0-rc.1-28139579.37395b7",
+    "@nuxt/image-edge": "^1.0.0-rc.1-28164352.ad7c010",
     "@nuxtjs/strapi": "^1.9.3",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@phosphor-icons/vue": "^2.1.4",
@@ -26,7 +26,7 @@
     "markdown-it": "^13.0.1",
     "nuxt-lodash": "^2.5.0",
     "nuxt-swiper": "^1.1.1",
-    "sass": "^1.63.6",
-    "smapper": "^0.0.7"
+    "sass": "^1.64.0",
+    "smapper": "^0.0.9"
   }
 }
