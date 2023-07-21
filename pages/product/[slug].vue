@@ -86,7 +86,7 @@ onMounted(async () => {
             </SwiperSlide>
           </Swiper>
         </div>
-        <div v-html="markdown.render(product?.description ?? '')" />
+        <div v-if="product?.description" v-html="markdown.render(product?.description ?? '')" />
       </div>
     </div>
     <!-- <div class="grid grid-cols-2 gap-8 mt-12 md:grid-cols-4">
