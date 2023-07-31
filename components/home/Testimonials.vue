@@ -23,27 +23,17 @@ const testimonials = [
       <div class="grid relative grid-cols-1 mt-8">
         <div class="tiny-two-item">
           <div class="tiny-slide">
-            <Swiper
-              :slides-per-view="1"
-              :space-between="30"
-              pagination
-              :breakpoints="{
-                '840': {
-                  slidesPerView: 2,
-                },
-                '1280': {
-                  slidesPerView: 4,
-                },
-              }"
-              autoplay
-              loop
-              navigation
-              :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]"
-            >
+            <Swiper :slides-per-view="1" :space-between="30" pagination :breakpoints="{
+              '840': {
+                slidesPerView: 2,
+              },
+              '1366': {
+                slidesPerView: 3,
+              },
+            }" autoplay loop navigation :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]">
               <SwiperSlide v-for="(item, index) in testimonials" :key="index">
                 <div
-                  class="lg:flex p-6 lg:p-0 relative rounded-md dark:shadow-gray-800 overflow-hidden m-2 bg-[url(/images/design/bg-image.jpg)] bg-center bg-cover bg-opacity-80"
-                >
+                  class="lg:flex p-6 lg:p-0 relative rounded-md dark:shadow-gray-800 overflow-hidden m-2 bg-[url(/images/design/bg-image.jpg)] bg-center bg-cover bg-opacity-80">
                   <div class="pt-6 lg:p-6 text-center lg:text-start space-y-4">
                     <p class="text-base text-slate-400 italic">
                       "{{ item.text }}"

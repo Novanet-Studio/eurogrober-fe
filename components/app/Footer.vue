@@ -11,7 +11,7 @@
           </div>
           <div class="md:text-start text-center flex items-center gap-2">
             <p class="mb-0 text-[10px] md:text-sm lg:text-base">
-              Developed by:
+              Published by:
             </p>
             <a href="https://novanet.studio" target="_blank">
               <img class="w-20 md:w-24" src="/images/design/novanet-logo.svg" alt="Novanet Logo">
