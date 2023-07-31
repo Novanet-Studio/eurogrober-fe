@@ -20,6 +20,7 @@
 // components
 @import "components/buttons";
 @import "components/breadcrumb";
+@import "components/tables";
 
 // structure
 @import "custom/structure/topnav";
@@ -40,6 +41,6 @@
 
 @layer components {
   .container {
-    @apply max-w-full px-4 md:px-10 xl:w-[85.375em];
+    @apply max-w-full px-4 md:px-10 xl:w-[85.375em] lg:px-8;
   }
 }

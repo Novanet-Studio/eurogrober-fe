@@ -73,39 +73,25 @@ onMounted(async () => {
       </div>
       <div class="flex flex-col lg:flex-row">
         <div class="relative">
+          <div class=" w-[70%] bg-red-600 px-4 py-1 text-white rounded-r-full text-xl">
+            {{ product.name }}
+          </div>
           <Swiper :space-between="32" :slides-per-view="1" :thumbs="{ swiper: thumbsSwiper }" mousewheel :navigation="{
             nextEl: '.slide__next',
             prevEl: '.slide__prev',
-          }" class="mySwiper2 h-60 md:h-96 w-64 md:w-[35.5rem] mt-8 overflow-auto lg:w-[40rem]"
+          }"
+            class="mySwiper2 md:w-[33.75rem] h-[33.75rem] shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500"
             :modules="[SwiperNavigation, SwiperThumbs, SwiperMousewheel]">
             <SwiperSlide class="" v-for="(image, i) in product.images" :key="i">
               <img :src="image.url" :alt="image.alternativeUrl" />
-              <div class="mt-4 absolute -top-9 left-0 w-11/12 bg-red-600 px-4 py-1 text-white rounded-r-full text-sm">
-                <a href="shop-item-detail.html" class="hover:text-indigo-600 text-xs font-semibold">{{ product.name }}</a>
-              </div>
+
             </SwiperSlide>
           </Swiper>
         </div>
-        <div v-if="product?.description" v-html="markdown.render(product?.description ?? '')" />
+        <div class="w-1/2 pt-8 pl-4" v-if="product?.description" v-html="markdown.render(product?.description ?? '')" />
       </div>
     </div>
-    <!-- <div class="grid grid-cols-2 gap-8 mt-12 md:grid-cols-4">
-      <div
-        class="text-[10px] p-6 text-color-4 font-bold border border-color-5 relative"
-        v-for="(size, i) in sizes"
-        :key="size"
-      >
-        {{ size }}
 
-        <div class="absolute -bottom-4 left-0 w-full flex justify-center">
-          <button
-            class="btn bg-color-1 hover:bg-red-800 border-color-1 hover:border-red-800 text-white rounded-full text-[12px] !p-2 !py-1"
-          >
-            Learn more
-          </button>
-        </div>
-      </div>
-    </div> -->
   </section>
 </template>
 

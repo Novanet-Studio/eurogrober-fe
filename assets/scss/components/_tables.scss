@@ -1,0 +1,26 @@
+/********************/
+/*    Table    */
+/*==================*/
+
+table {
+  @apply w-1/2 table-auto text-center text-sm font-light mt-8;
+
+  thead {
+    @apply border-b bg-color-4 font-medium text-white dark:border-neutral-500 dark:bg-neutral-900;
+
+    tr {
+      th {
+        @apply px-6 py-4;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      @apply border-b dark:border-neutral-500;
+      td {
+        @apply whitespace-nowrap  px-6 py-4 font-medium;
+      }
+    }
+  }
+}
