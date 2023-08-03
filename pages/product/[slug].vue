@@ -26,17 +26,6 @@ const setThumbsSwiper = (swiper) => {
   thumbsSwiper.value = swiper;
 };
 
-// const sizes = [
-//   "10” (25 cm) REF 2503F",
-//   "12” (30 cm) REF 3003F",
-//   "14” (35 cm) REF 3503F",
-//   "16” (40 cm) REF 4003F",
-//   "18” (45 cm) REF 4503F",
-//   "20” (50 cm) REF 5003F",
-//   "22” (55 cm) REF 5503F",
-//   "24” (60 cm) REF 6003F",
-// ];
-
 onMounted(async () => {
   try {
     const result = await graphql(GetProductBySlug, {
@@ -54,7 +43,7 @@ onMounted(async () => {
 
 <template>
   <section class="container relative mt-24 mb-10">
-    <div class="grid grid-cols-[4rem_1fr] gap-3 md:grid-cols-[7rem_1fr] md:gap-8">
+    <div class="grid grid-cols-[4rem_1fr] gap-3 lg:grid-cols-[7rem_1fr] lg:gap-8">
       <div class="h-full flex flex-col items-center">
         <button class="slide__prev mb-4">
           <PhCaretUp />
@@ -71,7 +60,7 @@ onMounted(async () => {
           <PhCaretDown />
         </button>
       </div>
-      <div class="flex flex-col lg:flex-row">
+      <div class="flex flex-col overflow-hidden md:flex-row">
         <div class="relative">
           <div class=" w-[70%] bg-red-600 px-4 py-1 text-white rounded-r-full text-xl">
             {{ product.name }}
@@ -80,9 +69,9 @@ onMounted(async () => {
             nextEl: '.slide__next',
             prevEl: '.slide__prev',
           }"
-            class="mySwiper2 md:w-[33.75rem] h-[33.75rem] shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500"
+            class="mySwiper2 sm:w-[1rem] sm:h-[1rem] md:w-[20rem] md:h-[20rem] lg:w-[33.75rem] lg:h-[33.75rem] shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500"
             :modules="[SwiperNavigation, SwiperThumbs, SwiperMousewheel]">
-            <SwiperSlide class="" v-for="(image, i) in product.images" :key="i">
+            <SwiperSlide v-for="(image, i) in product.images" :key="i">
               <img :src="image.url" :alt="image.alternativeUrl" />
 
             </SwiperSlide>
@@ -112,13 +101,6 @@ onMounted(async () => {
   align-items: center;
 }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 20%;
-  object-fit: cover;
-}
-
 .swiper {
   width: 100%;
   height: 300px;
@@ -129,6 +111,11 @@ onMounted(async () => {
 .swiper-slide {
   background-size: cover;
   background-position: center;
+}
+
+.swiper-slide img {
+  display: block;
+  object-fit: cover;
 }
 
 .mySwiper2 {
@@ -146,12 +133,5 @@ onMounted(async () => {
 
 .mySwiper .swiper-slide-thumb-active {
   @apply opacity-100 filter-none border-2 border-color-1;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 </style>

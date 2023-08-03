@@ -52,15 +52,15 @@ const encode = (data: any) =>
 const icons = [
   {
     icon: PhInstagram,
-    link: "",
+    link: "https://www.instagram.com/eurogrober.usa/",
   },
   {
     icon: PHFacebook,
-    link: "",
+    link: "https://www.facebook.com/eurogroberusa/",
   },
   {
     icon: PhWhatsapp,
-    link: "",
+    link: "https://wa.me/message/YNQNLEKYUXNIH1",
   },
 ];
 
@@ -182,7 +182,7 @@ const onSubmit = handleSubmit(async (data) => {
       </div>
       <div class="flex justify-center gap-10">
         <a class="w-9 h-9 bg-color-2 rounded-full text-white flex justify-center items-center md:w-[70px] md:h-[70px]"
-          v-for="(item, i) in icons" :key="i" :href="item.link">
+          v-for="(item, i) in icons" :key="i" :href="item.link" target="_blank">
           <component :is="item.icon" v-bind="{ weight: 'regular' }" class="md:text-2xl" />
         </a>
       </div>

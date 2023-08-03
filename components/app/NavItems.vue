@@ -87,7 +87,7 @@ watchEffect(() => {
   lock.value = false;
 })
 
-onMounted(() => {  
+onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 
   return () => {
@@ -100,27 +100,17 @@ onMounted(() => {
 <template>
   <div id="navigation" :class="isOpen ? 'block' : 'hidden'">
     <ul class="navigation-menu justify-end relative" ref="root">
-      <li
-        :style="{
-          '--el-left': `${styles.x}px`,
-          '--el-top': `${styles.y}px`,
-          '--el-width': `${styles.width}px`,
-          '--el-height': `${styles.height}px`,
-        }"
-        class="w-[var(--el-width)] rounded-full h-8 bg-color-1 block transition-all duration-200 ease-in mt-4 absolute top-[var(--el-top)] left-[var(--el-left)]"
-      ></li>
-      <li
-        v-for="(link, index) in items"
-        :key="index"
-        :class="active === index ? 'active' : '!text-color-4'"
-      >
-        <nuxt-link
-          :to="link.to"
-          class="sub-menu-item"
-          :ref="elementsRef"
-          @click.prevent="active = index"
-          >{{ link.name }}</nuxt-link
-        >
+      <li :style="{
+        '--el-left': `${styles.x}px`,
+        '--el-top': `${styles.y}px`,
+        '--el-width': `${styles.width}px`,
+        '--el-height': `${styles.height}px`,
+      }"
+        class="w-[var(--el-width)] rounded-full h-8 bg-color-1 block transition-all duration-200 ease-in absolute top-[var(--el-top)] left-[var(--el-left)] lg:mt-4">
+      </li>
+      <li v-for="(link, index) in items" :key="index" :class="active === index ? 'active' : '!text-color-4'">
+        <nuxt-link :to="link.to" class="sub-menu-item" :ref="elementsRef" @click.prevent="active = index">{{ link.name
+        }}</nuxt-link>
       </li>
     </ul>
   </div>

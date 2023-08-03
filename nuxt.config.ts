@@ -37,20 +37,22 @@ export default defineNuxtConfig({
       title: "Eurogrober",
       name: "Eurogrober Web App",
       author: "Novanet Studio <info@novanet.studio>",
-      description: "Landing page for eurogrober company",
-      theme_color: "#31150C",
+      description:
+        "We are committed to selling quality and luxury products for kitchens. We like working with distributors, carpenters, kitchen manufacturers, designers, architects – or whoever wants their own comfy and beautiful kitchen.",
+      theme_color: "#E92946",
       lang: "es",
     },
     manifest: {
       name: "Eurogrober Web App",
       short_name: "Eurogrober",
-      description: "Landing page for eurogrober company",
+      description:
+        "We are committed to selling quality and luxury products for kitchens. We like working with distributors, carpenters, kitchen manufacturers, designers, architects – or whoever wants their own comfy and beautiful kitchen.",
       start_url: "/",
       display: "standalone",
       background_color: "#ffffff",
-      theme_color: "#31150C",
+      theme_color: "#E92946",
     },
-    icon: { source: "static/favicon.png" },
+    icon: { source: "public/images/favicon.png" },
     /*workbox: {
       enabled: true,
     },*/
@@ -58,7 +60,7 @@ export default defineNuxtConfig({
 
   image: {
     // The screen sizes predefined by `@nuxt/image`:
-    dir: "./assets",
+    dir: "assets/images",
     screens: {
       xs: 320,
       sm: 640,

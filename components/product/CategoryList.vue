@@ -14,7 +14,7 @@ function changeCategory(slug) {
 
 <template>
   <div class="grid grid-cols-2 gap-[2px] mb-16 md:grid-cols-4">
-    <button class="text-[10px] p-8 !important text-center transition ease-in md:p-4 lg:text-sm" :class="active === category.slug
+    <button class="text-sm p-8 !important text-center transition ease-in md:p-4 lg:text-sm" :class="active === category.slug
       ? 'bg-color-4 text-white font-extrabold'
       : 'bg-color-5 text-color-4'
       " v-for="(category, i) in categories" :key="i" @click="changeCategory(category.slug)">
