@@ -15,7 +15,7 @@ const companyText = [
     icon: PhHammer,
   },
   {
-    title: "We Love American Kitchens",
+    title: "We love Kitchen hardware",
     content:
       "And to share everything kitchen-related.We look for long-term relationships with everyone related to making luxury kitchens in Florida, especially if you're from the Sunshine State! doing business.",
     icon: PhHandHeart,
