@@ -23,6 +23,10 @@ export default defineNuxtConfig({
     "@kevinmarrec/nuxt-pwa",
   ],
 
+  strapi: {
+    url: process.env.STRAPI_URL || "http://localhost:1337",
+  },
+
   tailwindcss: {
     cssPath: "./assets/scss/tailwind.scss",
   },
