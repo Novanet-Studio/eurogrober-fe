@@ -106,7 +106,7 @@
       &:hover,
       &.active {
         > a {
-          @apply text-white dark:text-indigo-600 #{!important};
+          @apply text-color-1 lg:text-white dark:text-indigo-600 #{!important};
         }
       }
       .submenu.megamenu {
@@ -484,7 +484,7 @@
   }
 
   #navigation {
-    @apply absolute top-[74px] start-0 w-full hidden h-auto bg-white dark:bg-slate-900 overflow-auto;
+    @apply absolute top-[72px] lg:top-[74px] start-0 w-full hidden h-auto bg-white dark:bg-slate-900 overflow-auto;
     &.open {
       @apply block overflow-y-auto;
     }

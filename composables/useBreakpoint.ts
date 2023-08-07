@@ -1,5 +1,7 @@
-const useBreakpoint = (breakpoints: Record<string, number>) => {
-  const breakpoint = ref<string | undefined>(undefined);
+const useBreakpoint = (
+  breakpoints: Record<string, number>
+): Ref<string | undefined> => {
+  const breakpoint = useState<string | undefined>("breakpoint", () => "");
 
   const handleWindowResize = () => {
     const windowWidth = window.innerWidth;
@@ -8,6 +10,8 @@ const useBreakpoint = (breakpoints: Record<string, number>) => {
     const matchingBreakpoint = Object.keys(breakpoints).find(
       (key) => windowWidth <= breakpoints[key]
     );
+
+    // console.log(matchingBreakpoint);
 
     breakpoint.value = matchingBreakpoint;
   };

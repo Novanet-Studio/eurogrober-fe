@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import theme from '~/config/theme.json';
+
 const isOpen = inject("isOpen") as Ref<boolean>;
+const parsed = transformToNumberValues(theme.screens);
+
+const breakpoint = useBreakpoint(parsed);
 
 const root = ref();
 const route = useRoute();
@@ -75,6 +80,7 @@ function handleScroll() {
 watch(active, animate);
 
 watchEffect(() => {
+
   if (route.path.includes('category') || route.path.includes('product')) {
     lock.value = true;
     setTimeout(() => {
@@ -88,6 +94,8 @@ watchEffect(() => {
 })
 
 onMounted(() => {
+  if (['xs', 'sm', 'md'].includes(breakpoint?.value ?? '')) return;
+
   window.addEventListener("scroll", handleScroll);
 
   return () => {
@@ -106,7 +114,7 @@ onMounted(() => {
         '--el-width': `${styles.width}px`,
         '--el-height': `${styles.height}px`,
       }"
-        class="w-[var(--el-width)] rounded-full h-8 bg-color-1 block transition-all duration-200 ease-in absolute top-[var(--el-top)] left-[var(--el-left)] lg:mt-4">
+        class="w-[var(--el-width)] rounded-full h-8 bg-color-1 transition-all duration-200 ease-in mt-4 absolute top-[var(--el-top)] left-[var(--el-left)] hidden lg:block">
       </li>
       <li v-for="(link, index) in items" :key="index" :class="active === index ? 'active' : '!text-color-4'">
         <nuxt-link :to="link.to" class="sub-menu-item" :ref="elementsRef" @click.prevent="active = index">{{ link.name
