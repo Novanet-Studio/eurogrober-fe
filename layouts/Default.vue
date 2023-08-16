@@ -1,9 +1,9 @@
 <template>
-  <ClientOnly>
+  <div>
     <AppNavigation />
     <slot />
     <AppFooter />
     <!-- <Switcher /> -->
     <BackTop />
-  </ClientOnly>
+  </div>
 </template>
