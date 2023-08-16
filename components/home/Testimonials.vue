@@ -1,16 +1,16 @@
 <script setup lang="ts">
 const testimonials = [
   {
-    text: "It seems that only fragments of the original text remain in the Lorem Ipsum texts used today.",
-    reference: "Thomas Israel",
+    text: "Eurogrober has the perfect combination. The best quality at the best price!",
+    reference: "Eurolatón España - Enrique Villaverde",
   },
   {
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    reference: "Thomas Lorem",
+    text: "The best products in and with cheaper prices to buy directly in China",
+    reference: "Grupo Frecar - Freddy Guevara",
   },
   {
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit, sit amet consectetur.",
-    reference: "Thomas Lorem 2",
+    text: "Eurogrober's high quality products enhances functionality and aesthetics on the kitchen.",
+    reference: "Tony Ibanez ",
   },
 ];
 </script>
