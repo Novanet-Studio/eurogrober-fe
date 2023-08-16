@@ -95,7 +95,9 @@ const onSubmit = handleSubmit(async (data) => {
                 Send us a message
               </h3>
 
-              <form @submit.prenvent="onSubmit" name="contact" method="post" data-netlify="true">
+              <form @submit.prenvent="onSubmit" name="contact" method="post" data-netlify="true"
+                data-netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="contact" />
                 <p class="mb-0" id="error-msg"></p>
                 <div id="simple-msg"></div>
                 <div class="grid md:grid-cols-6 md:gap-4 lg:grid-cols-12 lg:gap-6">
