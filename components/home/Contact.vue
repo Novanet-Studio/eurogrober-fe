@@ -70,7 +70,7 @@ const onSubmit = handleSubmit(async (data) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        'form-name': 'contacto',
+        'form-name': 'contact',
         ...data,
       }),
     });
