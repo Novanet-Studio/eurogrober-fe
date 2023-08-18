@@ -12,6 +12,7 @@ const testimonials = [
     text: "Eurogrober's high quality products enhances functionality and aesthetics on the kitchen.",
     reference: "Tony Ibanez ",
   },
+
 ];
 </script>
 
