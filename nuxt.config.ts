@@ -2,6 +2,7 @@ import gql from "@rollup/plugin-graphql";
 
 export default defineNuxtConfig({
   telemetry: false,
+  ssr: false,
   app: {
     head: {
       htmlAttrs: {
