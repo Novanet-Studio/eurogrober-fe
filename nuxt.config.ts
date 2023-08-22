@@ -15,7 +15,6 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    "nuxt-lodash",
     "nuxt-swiper",
     "@nuxtjs/strapi",
     "@nuxt/image-edge",
@@ -29,11 +28,6 @@ export default defineNuxtConfig({
 
   tailwindcss: {
     cssPath: "./assets/scss/tailwind.scss",
-  },
-
-  lodash: {
-    prefix: "$",
-    upperAfterPrefix: false,
   },
 
   pwa: {
