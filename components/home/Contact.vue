@@ -74,7 +74,6 @@ const onSubmit = handleSubmit(async (data) => {
         ...data,
       }),
     });
-    router.push('/gracias');
   } catch (error: any) {
     console.log(
       'Hubo un error al intentar enviar el formulario: ',
@@ -95,9 +94,8 @@ const onSubmit = handleSubmit(async (data) => {
                 Send us a message
               </h3>
 
-              <form @submit.prevent="onSubmit" name="contact-form" method="post" data-netlify="true"
-                data-netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="contact" />
+              <form name="contact-form" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="contact-form" />
                 <p class="mb-0" id="error-msg"></p>
                 <div id="simple-msg"></div>
                 <div class="grid md:grid-cols-6 md:gap-4 lg:grid-cols-12 lg:gap-6">
@@ -168,8 +166,9 @@ const onSubmit = handleSubmit(async (data) => {
                   </div>
                 </div>
                 <div class="flex justify-center">
-                  <button type="submit" id="submit" name="send"
-                    class="btn bg-color-1 font-bold px-8 hover:bg-orange-600 border-color-2 hover:border-orange-600 text-white rounded-full text-sm justify-center flex items-center md:py-3 md:px-12">
+                  <button type="button" id="submit"
+                    class="btn bg-color-1 font-bold px-8 hover:bg-orange-600 border-color-2 hover:border-orange-600 text-white rounded-full text-sm justify-center flex items-center md:py-3 md:px-12"
+                    @click="onSubmit">
                     Send
                   </button>
                 </div>
