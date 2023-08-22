@@ -74,7 +74,7 @@ const onSubmit = handleSubmit(async (data) => {
         ...data,
       }),
     });
-    // router.push('/gracias');
+    router.push('/gracias');
   } catch (error: any) {
     console.log(
       'Hubo un error al intentar enviar el formulario: ',
