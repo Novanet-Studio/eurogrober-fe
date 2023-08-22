@@ -87,19 +87,3 @@ const testimonials = [
   </section>
 </template>
 
-<style>
-/* :global(.swiper-button-next),
-:global(.swiper-button-prev) {
-  --swiper-navigation-size: 2rem;
-  --swiper-navigation-color: #e92946;
-}
-
-:global(.swiper-pagination-bullet-active) {
-  --swiper-pagination-color: #e92946;
-} */
-
-:root {
-  --swiper-navigation-size: 16px;
-  --swiper-navigation-color: #e92946;
-}
-</style>
