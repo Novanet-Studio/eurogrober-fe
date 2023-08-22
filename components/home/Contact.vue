@@ -70,7 +70,7 @@ const onSubmit = handleSubmit(async (data) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        'form-name': 'contact-form',
+        'form-name': 'contact',
         ...data,
       }),
     });
@@ -94,8 +94,9 @@ const onSubmit = handleSubmit(async (data) => {
                 Send us a message
               </h3>
 
-              <form name="contact-form" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="contact-form" />
+              <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field"
+                action="/?success=true">
+                <input type="hidden" name="form-name" value="contact" />
                 <p class="mb-0" id="error-msg"></p>
                 <div id="simple-msg"></div>
                 <div class="grid md:grid-cols-6 md:gap-4 lg:grid-cols-12 lg:gap-6">
