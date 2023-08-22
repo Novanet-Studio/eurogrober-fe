@@ -1,8 +1,10 @@
 <script setup>
 import mapper from "smapper";
 import MarkdownIt from "markdown-it";
+import { FreeMode, Navigation, Mousewheel, Thumbs } from 'swiper/modules';
 import { PhCaretUp, PhCaretDown } from "@phosphor-icons/vue";
 import { GetProductBySlug } from "~/graphql/queries";
+import 'swiper/element/css/navigation';
 
 definePageMeta({
   layout: "category",
@@ -48,14 +50,14 @@ onMounted(async () => {
         <button class="slide__prev mb-4">
           <PhCaretUp />
         </button>
-        <Swiper :space-between="10" :slides-per-view="4" @swiper="setThumbsSwiper" free-mode :navigation="{
+        <swiper-container :space-between="10" :slides-per-view="4" @swiper="setThumbsSwiper" free-mode :navigation="{
           nextEl: '.slide__next',
           prevEl: '.slide__prev',
-        }" watch-slides-progress :modules="[SwiperFreeMode, SwiperNavigation]" direction="vertical" class="mySwiper">
-          <SwiperSlide class="relative" v-for="(image, i) in product?.images" :key="i">
+        }" watch-slides-progress :modules="[FreeMode, Navigation]" direction="vertical" class="mySwiper">
+          <swiper-slide class="relative w-full h-28" v-for="(image, i) in product?.images" :key="i">
             <img :src="image.url" :alt="image.alternativeUrl" />
-          </SwiperSlide>
-        </Swiper>
+          </swiper-slide>
+        </swiper-container>
         <button class="slide__next mt-4">
           <PhCaretDown />
         </button>
@@ -65,17 +67,17 @@ onMounted(async () => {
           <div class=" w-[70%] bg-red-600 px-4 py-1 text-white rounded-r-full text-xl">
             {{ product.name }}
           </div>
-          <Swiper :space-between="32" :slides-per-view="1" :thumbs="{ swiper: thumbsSwiper }" mousewheel :navigation="{
+          <swiper-container :space-between="32" :slides-per-view="1" thumbs-swiper=".mySwiper" mousewheel :navigation="{
             nextEl: '.slide__next',
             prevEl: '.slide__prev',
           }"
             class="mySwiper2 sm:w-[1rem] sm:h-[1rem] md:w-[20rem] md:h-[20rem] lg:w-[33.75rem] lg:h-[33.75rem] shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500"
-            :modules="[SwiperNavigation, SwiperThumbs, SwiperMousewheel]">
-            <SwiperSlide v-for="(image, i) in product.images" :key="i">
+            :modules="[Navigation, Thumbs, Mousewheel]">
+            <swiper-slide v-for="(image, i) in product.images" :key="i">
               <img :src="image.url" :alt="image.alternativeUrl" />
 
-            </SwiperSlide>
-          </Swiper>
+            </swiper-slide>
+          </swiper-container>
         </div>
         <div class="w-1/2 pt-8 pl-4" v-if="product?.description" v-html="markdown.render(product?.description ?? '')" />
       </div>
@@ -127,11 +129,11 @@ onMounted(async () => {
   @apply box-border py-[10px] transition;
 }
 
-.mySwiper .swiper-slide {
+.mySwiper .swiper-slide :not(.swiper-slide-thumb-active) {
   @apply h-full opacity-40 filter blur-[1px];
 }
 
-.mySwiper .swiper-slide-thumb-active {
+.mySwiper .swiper-slide-thumb-active>img {
   @apply opacity-100 filter-none border-2 border-color-1;
 }
 </style>

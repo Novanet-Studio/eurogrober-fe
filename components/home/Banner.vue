@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import 'swiper/element/css/navigation';
+import 'swiper/element/css/autoplay';
+import 'swiper/element/css/pagination';
+
 const sliders = [
   {
     title: "Kitchen hardware at hand!",
@@ -17,15 +22,15 @@ const sliders = [
 <template>
   <section class="relative mt-24">
     <div class="container-fluid relative">
-      <Swiper :slides-per-view="1" pagination :breakpoints="{
+      <swiper-container :slides-per-view="1" pagination :breakpoints="{
         '840': {
           slidesPerView: 1,
         },
         '1366': {
           slidesPerView: 1,
         },
-      }" autoplay loop navigation :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]">
-        <SwiperSlide>
+      }" autoplay="true" loop="true" navigation="true" :modules="[Autoplay, Navigation, Pagination]">
+        <swiper-slide>
           <div class="relative py-48 table w-full shadow-md overflow-hidden">
             <div
               class="absolute -inset-2 bg-[url('/images/design/eurogrober-kitchen-white.webp')] bg-no-repeat md:bg-left bg-center bg-cover">
@@ -51,9 +56,9 @@ const sliders = [
               </div>
             </div>
           </div>
-        </SwiperSlide>
+        </swiper-slide>
 
-        <SwiperSlide>
+        <swiper-slide>
           <div class="relative py-48 table w-full shadow-md overflow-hidden">
             <div
               class="absolute -inset-2 bg-[url('/images/design/eurogrober-kitchen-brown-white.webp')] bg-no-repeat md:bg-left bg-center bg-cover">
@@ -79,10 +84,20 @@ const sliders = [
               </div>
             </div>
           </div>
-        </SwiperSlide>
-      </Swiper>
+        </swiper-slide>
+      </swiper-container>
     </div>
   </section>
 </template>
 
+<style>
+:root {
+  --swiper-navigation-color: #e92946;
+  --swiper-pagination-color: #e92946;
+}
 
+swiper-container::part(button-prev),
+swiper-container::part(button-next) {
+  --swiper-navigation-size: 2rem;
+}
+</style>

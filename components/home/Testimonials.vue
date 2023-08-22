@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import 'swiper/element/css/navigation';
+import 'swiper/element/css/pagination';
+import 'swiper/element/css/autoplay';
+
 const testimonials = [
   {
     text: "Eurogrober has the perfect combination. The best quality at the best price!",
@@ -24,15 +29,15 @@ const testimonials = [
       <div class="grid relative grid-cols-1 mt-8">
         <div class="tiny-two-item">
           <div class="tiny-slide">
-            <Swiper :slides-per-view="1" :space-between="30" pagination :breakpoints="{
+            <swiper-container :slides-per-view="1" :space-between="30" pagination :breakpoints="{
               '840': {
                 slidesPerView: 2,
               },
               '1366': {
                 slidesPerView: 3,
               },
-            }" autoplay loop navigation :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]">
-              <SwiperSlide v-for="(item, index) in testimonials" :key="index">
+            }" autoplay loop navigation :modules="[Autoplay, Navigation, Pagination]">
+              <swiper-slide v-for="(item, index) in testimonials" :key="index">
                 <div
                   class="lg:flex p-6 lg:p-0 relative rounded-md dark:shadow-gray-800 overflow-hidden m-2 bg-[url(/images/design/bg-image.jpg)] bg-center bg-cover bg-opacity-80">
                   <div class="pt-6 lg:p-6 text-center lg:text-start space-y-4">
@@ -47,8 +52,8 @@ const testimonials = [
                     </div>
                   </div>
                 </div>
-              </SwiperSlide>
-            </Swiper>
+              </swiper-slide>
+            </swiper-container>
           </div>
           <!-- <div class="tiny-slide">
             <div
@@ -82,8 +87,8 @@ const testimonials = [
   </section>
 </template>
 
-<style scoped>
-:global(.swiper-button-next),
+<style>
+/* :global(.swiper-button-next),
 :global(.swiper-button-prev) {
   --swiper-navigation-size: 2rem;
   --swiper-navigation-color: #e92946;
@@ -91,5 +96,10 @@ const testimonials = [
 
 :global(.swiper-pagination-bullet-active) {
   --swiper-pagination-color: #e92946;
+} */
+
+:root {
+  --swiper-navigation-size: 16px;
+  --swiper-navigation-color: #e92946;
 }
 </style>

@@ -15,7 +15,6 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    "nuxt-swiper",
     "@nuxtjs/strapi",
     "@nuxt/image-edge",
     "@nuxtjs/tailwindcss",
@@ -67,6 +66,13 @@ export default defineNuxtConfig({
       xl: 1280,
       xxl: 1536,
       "2xl": 1536,
+    },
+  },
+
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag: string) =>
+        ["swiper-container", "swiper-slide"].includes(tag),
     },
   },
 
