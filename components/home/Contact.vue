@@ -66,7 +66,7 @@ const icons = [
   },
 ];
 
-const onSubmit = handleSubmit(async (data) => {
+const onSubmit = handleSubmit(async (data, { resetForm }) => {
   try {
     await fetch('/', {
       method: 'POST',
@@ -91,6 +91,8 @@ const onSubmit = handleSubmit(async (data) => {
       title: 'Error while sending message',
       type: 'error',
     });
+  } finally {
+    resetForm();
   }
 });
 </script>
