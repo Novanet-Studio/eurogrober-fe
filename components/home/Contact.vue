@@ -28,6 +28,8 @@ const schema = yup.object({
   message: yup.string().required('Este campo es requerido'),
 });
 
+const { $notify } = useNuxtApp();
+
 const {
   useFieldModel,
   errors: _,
@@ -74,11 +76,21 @@ const onSubmit = handleSubmit(async (data) => {
         ...data,
       }),
     });
+
+    $notify({
+      title: 'Email sent successfully',
+      type: 'success',
+    });
   } catch (error: any) {
     console.log(
       'Hubo un error al intentar enviar el formulario: ',
       error.message
     );
+
+    $notify({
+      title: 'Error while sending message',
+      type: 'error',
+    });
   }
 });
 </script>

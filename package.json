@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@kevinmarrec/nuxt-pwa": "^0.17.0",
+    "@kyvg/vue3-notification": "^3.0.1",
     "@nuxt/image-edge": "^1.0.0-rc.1-28205905.cb96767",
     "@nuxtjs/strapi": "^1.9.3",
     "@nuxtjs/tailwindcss": "^6.8.0",

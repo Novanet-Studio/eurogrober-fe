@@ -9,5 +9,6 @@
     <HomeTestimonials />
     <HomeContact />
     <HomeCompanyInfo />
+    <notifications position="bottom right" class="mb-4 mr-4" />
   </div>
 </template>
