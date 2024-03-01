@@ -10,6 +10,12 @@ export default defineNuxtConfig({
         dir: "ltr",
         lang: "en",
       },
+      script: [
+        {
+          type: "text/javascript",
+          src: "js/metrics.js",
+        },
+      ],
     },
     // pageTransition: { name: "page", mode: "out-in" },
     // layoutTransition: { name: "layout", mode: "out-in" },
