@@ -5,6 +5,7 @@ const isOpen = inject("isOpen") as Ref<boolean>;
 const parsed = transformToNumberValues(theme.screens);
 
 const breakpoint = useBreakpoint(parsed);
+const router = useRouter()
 
 const root = ref();
 const route = useRoute();
@@ -77,6 +78,29 @@ function handleScroll() {
   }
 }
 
+function goTo(index: number) {
+  if (route.path.includes('category') || route.path.includes('product')) {
+    const item = items[index]
+    router.push({
+      path: '/',
+      hash: item.to
+    })
+
+    setTimeout(() => {
+      window.scrollTo({
+        top: document.querySelector(item.to)!.getBoundingClientRect().top + window.scrollY,
+        behavior: 'smooth'
+      })
+    }, 1000)
+  }
+
+  setTimeout(() => {
+    active.value = index;
+  }, INDICATOR_ANIMATION_DELAY);
+
+  isOpen.value = false;
+}
+
 watch(active, animate);
 
 watchEffect(() => {
@@ -109,16 +133,15 @@ onMounted(() => {
   <div id="navigation" :class="isOpen ? 'block' : 'hidden'">
     <ul class="navigation-menu justify-end relative" ref="root">
       <li :style="{
-        '--el-left': `${styles.x}px`,
-        '--el-top': `${styles.y}px`,
-        '--el-width': `${styles.width}px`,
-        '--el-height': `${styles.height}px`,
-      }"
-        class="w-[var(--el-width)] rounded-full h-8 bg-color-1 transition-all duration-200 ease-in mt-4 absolute top-[var(--el-top)] left-[var(--el-left)] hidden lg:block">
+    '--el-left': `${styles.x}px`,
+    '--el-top': `${styles.y}px`,
+    '--el-width': `${styles.width}px`,
+    '--el-height': `${styles.height}px`,
+  }" class="w-[var(--el-width)] rounded-full h-8 bg-color-1 transition-all duration-200 ease-in mt-4 absolute top-[var(--el-top)] left-[var(--el-left)] hidden lg:block">
       </li>
       <li v-for="(link, index) in items" :key="index" :class="active === index ? 'active' : '!text-color-4'">
-        <nuxt-link :to="link.to" class="sub-menu-item" :ref="elementsRef" @click.prevent="active = index">{{ link.name
-        }}</nuxt-link>
+        <nuxt-link :to="link.to" class="sub-menu-item" :ref="elementsRef" @click.prevent="goTo(index)">{{ link.name
+          }}</nuxt-link>
       </li>
     </ul>
   </div>
