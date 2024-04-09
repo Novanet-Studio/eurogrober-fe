@@ -12,7 +12,7 @@ defineProps<Props>();
 </script>
 
 <template>
-  <section class="relative table w-full mt-32 bg-[#D9D9D9] dark:bg-slate-800">
+  <section class="relative w-full mt-32 bg-[#D9D9D9] dark:bg-slate-800">
     <div class="container relative">
       <div class="relative py-2 lg:py-4 ">
         <ul class="breadcrumb tracking-[0.5px] mb-0 inline-block">

@@ -35,6 +35,7 @@ watchEffect(() => {
     },
     {
       text: "Products",
+      url: '/products'
     },
     {
       text: name ?? "",
