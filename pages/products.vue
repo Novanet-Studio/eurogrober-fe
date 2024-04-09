@@ -15,7 +15,11 @@ const items = [
 
 function scrollTo(slug = '') {
   const el = document.getElementById(slug);
-  el.scrollIntoView({ inline: 'start', behavior: "smooth" });
+  // el.scrollIntoView({ inline: 'start', behavior: "smooth" });
+  window.scrollTo({
+    top: el.offsetTop - 200,
+    behavior: "smooth",
+  })
   active.value = slug;
 }
 </script>
@@ -66,9 +70,10 @@ function scrollTo(slug = '') {
       <div class="grid sm:grid-cols-2 grid-cols-1 mx-8 mt-8 md:mx-0 gap-[30px] md:mt-0 md:grid-cols-2 lg:grid-cols-3"
         v-else>
         <NuxtLink :id="category.slug" :to="`/category/${category.slug}`" v-for="(category, i) in categories" :key="i">
-          <div class="group relative mb-8 md:mb-0">
+          <div class="group relative mb-8">
             <div
-              class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500">
+              class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500"
+              :class="[active === category.slug && 'shadow-xl shadow-color-4']">
               <img :src="category.product.images[0].url" alt="" />
             </div>
 
