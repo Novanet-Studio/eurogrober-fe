@@ -1,8 +1,8 @@
-import gql from "@rollup/plugin-graphql";
-
 export default defineNuxtConfig({
   telemetry: false,
   ssr: false,
+  devtools: { enabled: true },
+
   app: {
     head: {
       htmlAttrs: {
@@ -13,57 +13,56 @@ export default defineNuxtConfig({
       script: [
         {
           type: "text/javascript",
-          src: "js/metrics.js",
+          src: "/js/metrics.js",
         },
       ],
     },
-    // pageTransition: { name: "page", mode: "out-in" },
-    // layoutTransition: { name: "layout", mode: "out-in" },
   },
 
   modules: [
+    "@nuxt/icon",
     "@nuxtjs/strapi",
-    "@nuxt/image-edge",
+    "@nuxt/image",
     "@nuxtjs/tailwindcss",
-    "@kevinmarrec/nuxt-pwa",
+    "@vite-pwa/nuxt",
   ],
 
   strapi: {
     url: process.env.STRAPI_URL || "http://localhost:1337",
+    prefix: "/api",
+    version: "v5",
   },
 
   tailwindcss: {
-    cssPath: "./assets/scss/tailwind.scss",
+    cssPath: "~/assets/scss/tailwind.scss",
   },
 
   pwa: {
-    meta: {
-      title: "Eurogrober",
-      name: "Eurogrober Web App",
-      author: "Novanet Studio <info@novanet.studio>",
-      description:
-        "We are committed to selling quality and luxury products for kitchens. We like working with distributors, carpenters, kitchen manufacturers, designers, architects – or whoever wants their own comfy and beautiful kitchen.",
-      theme_color: "#E92946",
-      lang: "es",
-    },
+    registerType: "autoUpdate",
     manifest: {
       name: "Eurogrober Web App",
       short_name: "Eurogrober",
       description:
-        "We are committed to selling quality and luxury products for kitchens. We like working with distributors, carpenters, kitchen manufacturers, designers, architects – or whoever wants their own comfy and beautiful kitchen.",
+        "We are committed to selling quality and luxury products for kitchens.",
+      theme_color: "#E92946",
+      background_color: "#ffffff",
+      lang: "es",
       start_url: "/",
       display: "standalone",
-      background_color: "#ffffff",
-      theme_color: "#E92946",
+      icons: [
+        {
+          src: "/images/favicon.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+      ],
     },
-    icon: { source: "public/images/favicon.png" },
-    /*workbox: {
-      enabled: true,
-    },*/
+    workbox: {
+      navigateFallback: null,
+    },
   },
 
   image: {
-    // The screen sizes predefined by `@nuxt/image`:
     dir: "assets/images",
     screens: {
       xs: 320,
@@ -78,14 +77,7 @@ export default defineNuxtConfig({
 
   vue: {
     compilerOptions: {
-      isCustomElement: (tag: string) =>
-        ["swiper-container", "swiper-slide"].includes(tag),
+      isCustomElement: (tag) => tag.startsWith("swiper-"),
     },
   },
-
-  vite: {
-    plugins: [gql()],
-  },
-
-  devtools: { enabled: true },
 });
