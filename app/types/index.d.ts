@@ -4,6 +4,76 @@ declare module "*.gql" {
   export = Schema;
 }
 
+export interface StrapiImage {
+  id?: number;
+  documentId: string;
+  url: string;
+  name: string;
+  width?: number;
+  height?: number;
+  formats?: {
+    thumbnail?: ImageFormat;
+    small?: ImageFormat;
+    medium?: ImageFormat;
+    large?: ImageFormat;
+  };
+}
+
+export interface ImageFormat {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: null;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface Category {
+  documentId: string;
+  id?: number;
+
+  description?: string;
+  slug: string;
+
+  image?: StrapiImage[];
+  products?: Product[];
+}
+
+export interface Product {
+  documentId: string;
+  id?: number;
+
+  description: string;
+  name: string;
+  slug: string;
+  hasSlowMotion?: boolean;
+  images: StrapiImage[];
+  category?: Category;
+}
+
+export interface AlbumItem {
+  documentId: string;
+  id?: number;
+  label?: string;
+  description?: string;
+
+  image: StrapiImage;
+}
+
+export interface Album {
+  documentId: string;
+  id?: number;
+  title: string;
+  slug: string;
+
+  cover: StrapiImage;
+
+  album_items?: AlbumItem[];
+}
+
 export interface Products {
   data: Data;
 }

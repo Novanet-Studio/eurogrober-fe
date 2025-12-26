@@ -137,7 +137,6 @@ const handleThumbClick = (index) => {
 </template>
 
 <style scoped>
-/* Reset de estilos internos del Web Component */
 swiper-container::part(container) {
   padding: 0 !important;
 }
@@ -150,10 +149,8 @@ swiper-container::part(container) {
 swiper-slide {
   opacity: 0.6;
   height: auto !important;
-  /* Permite que el slide se ajuste al contenedor flex */
 }
 
-/* Scrollbar para la descripción */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }

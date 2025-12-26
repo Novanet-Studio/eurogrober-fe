@@ -56,4 +56,47 @@ const getProductBySlug = `query GetProductBySlug($slug: String) {
   }
 }`;
 
-export { getProductsByCategory, getCategories, getProductBySlug };
+const getAlbumsQuery = `
+  query getAlbums {
+    albums {
+      documentId
+      title
+      slug
+      cover {
+        url
+        name
+        width
+        height
+      }
+    }
+  }
+`;
+
+const getAlbumBySlugQuery = `
+  query getAlbumBySlug($slug: String!) {
+    albums(filters: { slug: { eq: $slug } }) {
+      documentId
+      title
+      slug
+      album_items {
+        documentId
+        label
+        description
+        image {
+          url
+          name
+          width
+          height
+        }
+      }
+    }
+  }
+`;
+
+export {
+  getProductsByCategory,
+  getCategories,
+  getProductBySlug,
+  getAlbumsQuery,
+  getAlbumBySlugQuery,
+};

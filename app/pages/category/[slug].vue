@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getProductsByCategory } from '~/schemas/eurogrober-queries';
-
+import { getProductsByCategory } from "~/schemas/eurogrober-queries";
+import type { Category } from "~/types";
 
 definePageMeta({
   layout: "category",
@@ -9,8 +9,8 @@ definePageMeta({
 const route = useRoute();
 const graphql = useStrapiGraphQL();
 
-
 const { data: category, status } = await useAsyncData(
+  `category-products-${route.params.slug}`,
 
   async () => {
     try {
@@ -18,15 +18,18 @@ const { data: category, status } = await useAsyncData(
         slug: route.params.slug,
       });
 
-      return response?.data?.categories?.[0] as any || null;
+      return (response?.data?.categories?.[0] as Category) || null;
     } catch (error) {
       console.error("Error loading category products:", error);
       return null;
     }
+  },
+  {
+    watch: [() => route.params.slug],
   }
 );
 
-const isLoading = computed(() => status.value === 'pending');
+const isLoading = computed(() => status.value === "pending");
 </script>
 
 <template>
@@ -42,8 +45,9 @@ const isLoading = computed(() => status.value === 'pending');
         <div class="group relative mb-8">
           <div
             class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500 aspect-square">
-            <img v-if="product.images && product.images.length > 0" :src="product.images[0].url"
-              :alt="product.images[0].name" class="w-full h-full object-cover" />
+            <img v-if="product.images && product.images.length > 0" :src="product.images[0]!.url"
+              :alt="product.images[0]!.name || product.name" class="w-full h-full object-cover" />
+
             <div v-else class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
               No Image
             </div>
@@ -51,7 +55,6 @@ const isLoading = computed(() => status.value === 'pending');
 
           <div
             class="mt-4 absolute -top-9 left-0 w-11/12 bg-red-600 px-4 py-1 text-white rounded-r-full text-sm md:text-start">
-
             <span class="hover:text-indigo-600 text-xs font-semibold">
               {{ product.name }}
             </span>
