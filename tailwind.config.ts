@@ -1,17 +1,39 @@
-import theme from "./config/theme.json";
-
 export default {
   darkMode: "class",
   important: true,
   theme: {
     screens: {
-      ...theme.screens,
+      xs: "540px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
     },
     fontFamily: {
-      ...theme.fontFamily,
+      nunito: ["'Nunito', sans-serif"],
+      "cursive-alex": ["'Alex Brush', cursive"],
+      "cursive-kaushan": ["'Kaushan Script', cursive"],
+      "head-ebgaramond": ["'EB Garamond', serif"],
+      "para-worksans": ["'Work Sans', sans-serif"],
     },
     container: {
-      ...theme.container,
+      center: true,
+      padding: {
+        DEFAULT: "12px",
+        sm: "1rem",
+        lg: "45px",
+        xl: "5rem",
+        "2xl": "13rem",
+      },
+      screens: {
+        xs: "500px",
+        sm: "600px",
+        md: "718px",
+        lg: "980px",
+        xl: "1080px",
+        "2xl": "1436px",
+      },
     },
     extend: {
       colors: {
