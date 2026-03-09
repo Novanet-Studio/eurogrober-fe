@@ -19,7 +19,7 @@ const info = [
   {
     icon: "ph:map-pin",
     title: "Location",
-    content: "8900 NW 35th Lane Suite 140 Doral FL. 33172",
+    content: "10303 NW 62nd Street. Doral FL 33178",
   },
 ];
 </script>
