@@ -1,5 +1,6 @@
 {
-  "name": "nuxt-app",
+  "name": "eurogrober-fe",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -29,5 +30,9 @@
     "swiper": "12.1.3",
     "vee-validate": "^4.15.1",
     "yup": "^1.7.1"
+  },
+  "overrides": {
+    "workbox-build": "7.1.0",
+    "workbox-window": "7.1.0"
   }
 }
