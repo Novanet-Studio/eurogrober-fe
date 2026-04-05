@@ -8,6 +8,9 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "swiper/css/free-mode";
 import { getProductBySlug } from "~/schemas/eurogrober-queries";
+import { metadata } from '~/assets/data/metadata';
+import { jsonld } from '~/assets/data/jsonld';
+import { useJsonLd } from '~/composables/useJsonLd';
 
 register();
 
@@ -18,6 +21,7 @@ definePageMeta({
 const markdown = new MarkdownIt();
 const graphql = useStrapiGraphQL();
 const route = useRoute();
+const requestUrl = useRequestURL();
 const { slug } = route.params;
 
 const productItem = inject("product");
@@ -38,6 +42,11 @@ const { data: product } = await useAsyncData(
     }
   }
 );
+
+if (product.value) {
+    useSeoMeta(metadata.product(product.value, requestUrl.href));
+    useJsonLd(jsonld.product(product.value));
+}
 
 watch(
   product,

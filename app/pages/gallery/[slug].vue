@@ -1,32 +1,25 @@
 <script setup lang="ts">
 import { getAlbumBySlugQuery } from '~/schemas/eurogrober-queries';
 import type { Album } from '~/types';
-
+import { metadata } from '~/assets/data/metadata';
+import { jsonld } from '~/assets/data/jsonld';
+import { useJsonLd } from '~/composables/useJsonLd';
 
 definePageMeta({
     layout: "gallery",
 });
 
 const route = useRoute();
+const requestUrl = useRequestURL();
 const graphql = useStrapiGraphQL();
 
-
-
-
 const { data: album, status } = await useAsyncData(
-
     `gallery-album-${route.params.slug}`,
-
     async () => {
-
-        if (import.meta.server) console.log(`[SERVER] Fetching album: ${route.params.slug}`);
-        if (import.meta.client) console.log(`[CLIENT] Fetching album: ${route.params.slug}`);
-
         try {
             const response = await graphql<any>(getAlbumBySlugQuery, {
                 slug: route.params.slug,
             });
-
 
             const data = response?.data?.albums?.[0] || null;
             return data as Album;
@@ -36,25 +29,23 @@ const { data: album, status } = await useAsyncData(
         }
     },
     {
-
         watch: [() => route.params.slug],
-
-
     }
 );
 
 const isLoading = computed(() => status.value === 'pending');
+
+if (album.value) {
+    useSeoMeta(metadata.gallery(album.value, requestUrl.href));
+    useJsonLd(jsonld.gallery(album.value));
+}
 </script>
 
 <template>
     <section class="relative container pb-20">
-
-
-
         <div v-if="isLoading" class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 mt-8">
             <div v-for="i in 6" :key="i" class="h-64 bg-gray-200 animate-pulse rounded-lg break-inside-avoid"></div>
         </div>
-
 
         <div v-else-if="album && album.album_items && album.album_items.length > 0"
             class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 mt-8">
@@ -75,7 +66,6 @@ const isLoading = computed(() => status.value === 'pending');
                 </div>
             </div>
         </div>
-
 
         <div v-else class="mt-10 text-center py-20 bg-gray-50 rounded-lg">
             <p class="text-xl text-gray-500">No photos available.</p>

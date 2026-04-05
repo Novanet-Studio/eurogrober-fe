@@ -1,0 +1,23 @@
+{
+  "siteName": "Eurogrober",
+  "baseUrl": "https://eurogrober.com",
+  "defaultTitle": "Eurogrober",
+  "defaultDescription": "We are committed to selling quality and luxury products for kitchens.",
+  "defaultImage": "/images/favicon.png",
+  "language": "es",
+  "socials": {
+    "facebook": "https://facebook.com/eurogrober",
+    "instagram": "https://instagram.com/eurogrober"
+  },
+  "contact": {
+    "telephone": "+51999999999",
+    "email": "contacto@eurogrober.com",
+    "address": {
+      "streetAddress": "Av. Example 123",
+      "addressLocality": "Lima",
+      "addressRegion": "LMA",
+      "postalCode": "15001",
+      "addressCountry": "PE"
+    }
+  }
+}

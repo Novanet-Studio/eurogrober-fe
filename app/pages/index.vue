@@ -1,3 +1,11 @@
+<script setup>
+import { metadata } from '~/assets/data/metadata';
+import { jsonld } from '~/assets/data/jsonld';
+
+useSeoMeta(metadata.home);
+useJsonLd(jsonld.home);
+</script>
+
 <template>
   <div>
     <HomeBanner />

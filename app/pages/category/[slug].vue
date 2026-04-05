@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { getProductsByCategory } from "~/schemas/eurogrober-queries";
 import type { Category } from "~/types";
+import { metadata } from '~/assets/data/metadata';
+import { jsonld } from '~/assets/data/jsonld';
+import { useJsonLd } from '~/composables/useJsonLd';
 
 definePageMeta({
   layout: "category",
 });
 
 const route = useRoute();
+const requestUrl = useRequestURL();
 const graphql = useStrapiGraphQL();
 
 const { data: category, status } = await useAsyncData(
@@ -30,6 +34,11 @@ const { data: category, status } = await useAsyncData(
 );
 
 const isLoading = computed(() => status.value === "pending");
+
+if (category.value) {
+    useSeoMeta(metadata.category(category.value, requestUrl.href));
+    useJsonLd(jsonld.category(category.value));
+}
 </script>
 
 <template>

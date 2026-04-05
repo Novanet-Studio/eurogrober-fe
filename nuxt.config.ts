@@ -25,6 +25,8 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/tailwindcss",
     "@vite-pwa/nuxt",
+    "@nuxtjs/robots",
+    "@nuxtjs/sitemap",
   ],
 
   strapi: {
