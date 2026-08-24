@@ -20,7 +20,7 @@ const { data: categoriesData } = await useAsyncData(
       console.error("Error fetching categories in layout:", error);
       return [];
     }
-  }
+  },
 );
 
 watch(
@@ -28,7 +28,7 @@ watch(
   (newVal) => {
     categories.value = newVal || [];
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 watchEffect(() => {
@@ -75,35 +75,50 @@ provide("items", items);
 
     <Breadcrumb :items="items" />
 
-    <div class="container shadow-md dark:shadow-gray-800 overflow-hidden mt-6 grid md:grid-cols-2">
+    <div
+      class="container shadow-md dark:shadow-gray-800 overflow-hidden mt-6 grid md:grid-cols-2"
+    >
       <div class="lg:flex flex-col justify-center">
         <div class="pt-1 lg:p-1 text-center space-y-4">
           <h3 class="text-xl text-color-1 font-extrabold lg:text-5xl">
             {{ currentCategory?.name }}
           </h3>
           <div v-if="currentCategory?.description">
-            <div class="text-color-4 block mb-1 text-center lg:text-2xl"
-              v-html="markdown.render(currentCategory.description)"></div>
+            <div
+              class="text-color-4 block mb-1 text-center lg:text-2xl"
+              v-html="markdown.render(currentCategory.description)"
+            ></div>
           </div>
         </div>
       </div>
 
       <div class="relative min-h-[200px]">
-        <img v-if="
-          currentCategory?.products?.length &&
-          currentCategory.products[0].images?.length
-        " class="h-42 lg:h-80 w-full bg-center object-contain object-top"
-          :src="currentCategory.products[0].images[0]" :alt="currentCategory.name" />
+        <img
+          v-if="
+            currentCategory?.products?.length &&
+            currentCategory.products[0].images?.length
+          "
+          class="h-42 lg:h-80 w-full bg-center object-contain object-top"
+          :src="currentCategory.products[0].images[0]"
+          :alt="currentCategory.name"
+        />
 
-        <div v-else class="h-42 lg:h-80 w-full bg-gray-200 flex items-center justify-center text-gray-400">
+        <div
+          v-else
+          class="h-42 lg:h-80 w-full bg-gray-200 flex items-center justify-center text-gray-400"
+        >
           <span>Select a category</span>
         </div>
       </div>
     </div>
 
     <div class="container relative mt-16 md:mt-8">
-      <HeaderTitle title="Products" subtitle="Kitchen hardware and accessories" v-if="!isProductDetail"
-        class="mt-8 mb-8" />
+      <HeaderTitle
+        title="Products"
+        subtitle="Kitchen hardware and accessories"
+        v-if="!isProductDetail"
+        class="mt-8 mb-8"
+      />
 
       <CategoryList />
     </div>

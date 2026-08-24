@@ -28,7 +28,7 @@ export default async function useGetCategories() {
     {
       default: () => [],
       lazy: true,
-    }
+    },
   );
 
   const isLoading = computed(() => status.value === "pending");

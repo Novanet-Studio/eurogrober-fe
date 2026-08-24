@@ -10,9 +10,7 @@ export default defineNuxtConfig({
         dir: "ltr",
         lang: "en",
       },
-      link: [
-        { rel: "icon", type: "image/png", href: "/images/favicon.png" },
-      ],
+      link: [{ rel: "icon", type: "image/png", href: "/images/favicon.png" }],
       script: [
         {
           type: "text/javascript",

@@ -1,5 +1,5 @@
 const useBreakpoint = (
-  breakpoints: Record<string, number>
+  breakpoints: Record<string, number>,
 ): Ref<string | undefined> => {
   const breakpoint = useState<string | undefined>("breakpoint", () => "");
 
@@ -7,7 +7,7 @@ const useBreakpoint = (
     const windowWidth = window.innerWidth;
 
     const matchingBreakpoint = Object.keys(breakpoints).find(
-      (key) => windowWidth <= breakpoints[key]
+      (key) => windowWidth <= breakpoints[key],
     );
 
     breakpoint.value = matchingBreakpoint;

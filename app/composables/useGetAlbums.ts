@@ -18,7 +18,7 @@ export default async function useGetAlbums() {
     {
       default: () => [],
       lazy: true,
-    }
+    },
   );
 
   const isLoading = computed(() => status.value === "pending");
