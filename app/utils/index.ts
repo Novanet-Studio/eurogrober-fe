@@ -4,7 +4,7 @@
  * @return {Record<string, number>}
  */
 export function transformToNumberValues(
-  input: Record<string, string>
+  input: Record<string, string>,
 ): Record<string, number> {
   let obj: Record<string, number> = {};
 

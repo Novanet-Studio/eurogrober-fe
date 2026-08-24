@@ -1,15 +1,15 @@
 <script setup lang="ts">
 definePageMeta({
-    middleware: [
-        function (to, from) {
-            return navigateTo('/');
-        },
-    ],
+  middleware: [
+    function (to, from) {
+      return navigateTo("/");
+    },
+  ],
 });
 </script>
 
 <template>
-    <div>
-        <!-- Redirecting... -->
-    </div>
+  <div>
+    <!-- Redirecting... -->
+  </div>
 </template>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import 'swiper/element/css/navigation';
-import 'swiper/element/css/pagination';
-import 'swiper/element/css/autoplay';
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import "swiper/element/css/navigation";
+import "swiper/element/css/pagination";
+import "swiper/element/css/autoplay";
 
 const testimonials = [
   {
@@ -17,7 +17,6 @@ const testimonials = [
     text: "Eurogrober's high quality products enhances functionality and aesthetics on the kitchen.",
     reference: "Tony Ibanez ",
   },
-
 ];
 </script>
 
@@ -29,17 +28,27 @@ const testimonials = [
       <div class="grid relative grid-cols-1 mt-8">
         <div class="tiny-two-item">
           <div class="tiny-slide">
-            <swiper-container :slides-per-view="1" :space-between="30" pagination :breakpoints="{
-              '840': {
-                slidesPerView: 2,
-              },
-              '1366': {
-                slidesPerView: 3,
-              },
-            }" autoplay loop navigation :modules="[Autoplay, Navigation, Pagination]">
+            <swiper-container
+              :slides-per-view="1"
+              :space-between="30"
+              pagination
+              :breakpoints="{
+                '840': {
+                  slidesPerView: 2,
+                },
+                '1366': {
+                  slidesPerView: 3,
+                },
+              }"
+              autoplay
+              loop
+              navigation
+              :modules="[Autoplay, Navigation, Pagination]"
+            >
               <swiper-slide v-for="(item, index) in testimonials" :key="index">
                 <div
-                  class="lg:flex p-6 lg:p-0 relative rounded-md dark:shadow-gray-800 overflow-hidden m-2 bg-[url(/images/design/bg-image.jpg)] bg-center bg-cover bg-opacity-80">
+                  class="lg:flex p-6 lg:p-0 relative rounded-md dark:shadow-gray-800 overflow-hidden m-2 bg-[url(/images/design/bg-image.jpg)] bg-center bg-cover bg-opacity-80"
+                >
                   <div class="pt-6 lg:p-6 text-center lg:text-start space-y-4">
                     <p class="text-base text-slate-400 italic">
                       "{{ item.text }}"
@@ -86,4 +95,3 @@ const testimonials = [
     </div>
   </section>
 </template>
-

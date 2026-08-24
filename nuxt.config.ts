@@ -10,6 +10,7 @@ export default defineNuxtConfig({
         dir: "ltr",
         lang: "en",
       },
+      link: [{ rel: "icon", type: "image/png", href: "/images/favicon.png" }],
       script: [
         {
           type: "text/javascript",
@@ -17,21 +18,23 @@ export default defineNuxtConfig({
         },
       ],
     },
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: false,
+  },
+
+  runtimeConfig: {
+    public: {
+      kairosApiUrl: process.env.KAIROS_API_URL,
+      kairosApiKey: process.env.KAIROS_API_KEY,
+    },
   },
 
   modules: [
     "@nuxt/icon",
-    "@nuxtjs/strapi",
     "@nuxt/image",
     "@nuxtjs/tailwindcss",
     "@vite-pwa/nuxt",
   ],
-
-  strapi: {
-    url: process.env.STRAPI_URL || "http://localhost:1337",
-    prefix: "/api",
-    version: "v5",
-  },
 
   tailwindcss: {
     cssPath: "~/assets/scss/tailwind.scss",

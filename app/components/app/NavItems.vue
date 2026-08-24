@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const isOpen = inject("isOpen") as Ref<boolean>;
 const parsed = transformToNumberValues({
   xs: "540px",
@@ -11,7 +10,7 @@ const parsed = transformToNumberValues({
 });
 
 const breakpoint = useBreakpoint(parsed);
-const router = useRouter()
+const router = useRouter();
 
 const root = ref();
 const route = useRoute();
@@ -29,11 +28,11 @@ const items = [
   },
   {
     name: "Gallery",
-    to: "#gallery",
+    to: "/#gallery",
   },
   {
     name: "Contact",
-    to: "#contact",
+    to: "/#contact",
   },
 ];
 
@@ -85,22 +84,24 @@ function handleScroll() {
 }
 
 function goTo(index: number) {
-  if (route.path.includes('category') || route.path.includes('product')) {
+  if (route.path.includes("category") || route.path.includes("product")) {
     const item = items[index];
 
     if (!item) return;
 
     router.push({
-      path: '/',
-      hash: item.to
-    })
+      path: "/",
+      hash: item.to,
+    });
 
     setTimeout(() => {
       window.scrollTo({
-        top: document.querySelector(item.to)!.getBoundingClientRect().top + window.scrollY,
-        behavior: 'smooth'
-      })
-    }, 1000)
+        top:
+          document.querySelector(item.to)!.getBoundingClientRect().top +
+          window.scrollY,
+        behavior: "smooth",
+      });
+    }, 1000);
   }
 
   setTimeout(() => {
@@ -113,8 +114,7 @@ function goTo(index: number) {
 watch(active, animate);
 
 watchEffect(() => {
-
-  if (route.path.includes('category') || route.path.includes('product')) {
+  if (route.path.includes("category") || route.path.includes("product")) {
     lock.value = true;
     setTimeout(() => {
       active.value = 1;
@@ -124,10 +124,10 @@ watchEffect(() => {
   }
 
   lock.value = false;
-})
+});
 
 onMounted(() => {
-  if (['xs', 'sm', 'md'].includes(breakpoint?.value ?? '')) return;
+  if (["xs", "sm", "md"].includes(breakpoint?.value ?? "")) return;
 
   window.addEventListener("scroll", handleScroll);
 
@@ -135,23 +135,32 @@ onMounted(() => {
     window.removeEventListener("scroll", handleScroll);
   };
 });
-
 </script>
 
 <template>
   <div id="navigation" :class="isOpen ? 'block' : 'hidden'">
     <ul class="navigation-menu justify-end relative" ref="root">
-      <li :style="{
-        '--el-left': `${styles.x}px`,
-        '--el-top': `${styles.y}px`,
-        '--el-width': `${styles.width}px`,
-        '--el-height': `${styles.height}px`,
-      }"
-        class="w-[var(--el-width)] rounded-full h-8 bg-color-1 transition-all duration-200 ease-in mt-4 absolute top-[var(--el-top)] left-[var(--el-left)] hidden lg:block">
-      </li>
-      <li v-for="(link, index) in items" :key="index" :class="active === index ? 'active' : '!text-color-4'">
-        <nuxt-link :to="link.to" class="sub-menu-item" :ref="elementsRef" @click.prevent="goTo(index)">{{ link.name
-        }}</nuxt-link>
+      <li
+        :style="{
+          '--el-left': `${styles.x}px`,
+          '--el-top': `${styles.y}px`,
+          '--el-width': `${styles.width}px`,
+          '--el-height': `${styles.height}px`,
+        }"
+        class="w-[var(--el-width)] rounded-full h-8 bg-color-1 transition-all duration-200 ease-in mt-4 absolute top-[var(--el-top)] left-[var(--el-left)] hidden lg:block"
+      ></li>
+      <li
+        v-for="(link, index) in items"
+        :key="index"
+        :class="active === index ? 'active' : '!text-color-4'"
+      >
+        <nuxt-link
+          :to="link.to"
+          class="sub-menu-item"
+          :ref="elementsRef"
+          @click.prevent="goTo(index)"
+          >{{ link.name }}</nuxt-link
+        >
       </li>
     </ul>
   </div>

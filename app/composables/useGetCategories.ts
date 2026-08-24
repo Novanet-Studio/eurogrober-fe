@@ -1,16 +1,6 @@
 import { getCategories } from "~/schemas/eurogrober-queries";
 
-interface Category {
-  documentId: string;
-  id: number;
-  name: string;
-  slug: string;
-  products: any[];
-}
-
 export default async function useGetCategories() {
-  const graphql = useStrapiGraphQL();
-
   const {
     data: categories,
     status,
@@ -19,12 +9,9 @@ export default async function useGetCategories() {
     "categories-list",
     async () => {
       try {
-        const result = await graphql<any>(getCategories);
+        const rawCategories = await getCategories();
 
-        const rawCategories = result?.data?.categories || [];
-
-        return rawCategories.map((category: Category) => ({
-          id: category.id,
+        return rawCategories.map((category) => ({
           name: category.name,
           slug: category.slug,
 
@@ -41,7 +28,7 @@ export default async function useGetCategories() {
     {
       default: () => [],
       lazy: true,
-    }
+    },
   );
 
   const isLoading = computed(() => status.value === "pending");

@@ -29,12 +29,23 @@ const sliders = [
   <section class="relative mt-24">
     <ClientOnly>
       <div class="container-fluid relative group">
-        <swiper-container slides-per-view="1" navigation="true" pagination="false" loop="true" autoplay-delay="25000"
-          speed="2000" class="h-auto w-full">
+        <swiper-container
+          slides-per-view="1"
+          navigation="true"
+          pagination="false"
+          loop="true"
+          autoplay-delay="25000"
+          speed="2000"
+          class="h-auto w-full"
+        >
           <swiper-slide v-for="(slide, index) in sliders" :key="index">
-            <div class="relative py-48 table w-full shadow-md overflow-hidden min-h-[600px]">
-              <div class="absolute -inset-2 bg-no-repeat md:bg-left bg-center bg-cover"
-                :style="{ backgroundImage: `url('${slide.image}')` }"></div>
+            <div
+              class="relative py-48 table w-full shadow-md overflow-hidden min-h-[600px]"
+            >
+              <div
+                class="absolute -inset-2 bg-no-repeat md:bg-left bg-center bg-cover"
+                :style="{ backgroundImage: `url('${slide.image}')` }"
+              ></div>
 
               <div class="absolute inset-0 bg-slate-950/30"></div>
 
@@ -42,16 +53,20 @@ const sliders = [
                 <div class="grid grid-cols-1 mb-12 w-full">
                   <div class="text-center md:text-start">
                     <h1
-                      class="font-extrabold text-color-1 mb-2 text-2xl md:text-3xl lg:text-5xl lg:leading-normal drop-shadow-md">
+                      class="font-extrabold text-color-1 mb-2 text-2xl md:text-3xl lg:text-5xl lg:leading-normal drop-shadow-md"
+                    >
                       {{ slide.title }}
                     </h1>
                     <p
-                      class="text-color-5 text-lg max-w-xl text-center md:text-start md:text-xl md:max-w-sm lg:text-3xl lg:max-w-lg drop-shadow-sm">
+                      class="text-color-5 text-lg max-w-xl text-center md:text-start md:text-xl md:max-w-sm lg:text-3xl lg:max-w-lg drop-shadow-sm"
+                    >
                       {{ slide.description }}
                     </p>
                     <div class="mt-6 md:mt-4">
-                      <a :href="slide.link"
-                        class="inline-block bg-color-1 text-white px-6 py-3 rounded-full font-bold border border-color-1 hover:border-red-800 hover:bg-red-800 transition-colors">
+                      <a
+                        :href="slide.link"
+                        class="inline-block bg-color-1 text-white px-6 py-3 rounded-full font-bold border border-color-1 hover:border-red-800 hover:bg-red-800 transition-colors"
+                      >
                         Learn more
                       </a>
                     </div>

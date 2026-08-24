@@ -44,3 +44,13 @@
     @apply max-w-full px-4 md:px-10 xl:w-[85.375em] lg:px-8;
   }
 }
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}

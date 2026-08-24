@@ -1,8 +1,6 @@
-import { getAlbumsQuery } from "~/schemas/eurogrober-queries";
+import { getAlbums } from "~/schemas/eurogrober-queries";
 
 export default async function useGetAlbums() {
-  const graphql = useStrapiGraphQL();
-
   const {
     data: albums,
     status,
@@ -11,8 +9,7 @@ export default async function useGetAlbums() {
     "albums-list",
     async () => {
       try {
-        const result = await graphql<any>(getAlbumsQuery);
-        return result?.data?.albums || [];
+        return await getAlbums();
       } catch (err) {
         console.error("An error occurred while getting albums", err);
         return [];
@@ -21,7 +18,7 @@ export default async function useGetAlbums() {
     {
       default: () => [],
       lazy: true,
-    }
+    },
   );
 
   const isLoading = computed(() => status.value === "pending");

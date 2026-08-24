@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 let showButton = ref(false);
 let buttonRef = ref(null);
 
@@ -26,10 +25,12 @@ onMounted(() => {
 
 <template>
   <Transition>
-    <button @click.prevent="backToTop" ref="buttonRef"
+    <button
+      @click.prevent="backToTop"
+      ref="buttonRef"
       class="back-to-top fixed text-lg rounded-full z-10 bottom-5 end-5 h-9 w-9 flex justify-center items-center bg-color-1 text-white leading-9"
-      :class="showButton ? 'block' : 'hidden'">
-
+      :class="showButton ? 'block' : 'hidden'"
+    >
       <Icon name="ph:arrow-up" />
     </button>
   </Transition>

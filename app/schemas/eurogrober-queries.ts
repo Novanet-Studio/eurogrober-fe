@@ -1,102 +1,48 @@
-const getCategories = `query GetCategories {
-  categories {
-    documentId
-    name
-    description
-    slug
-    products {
-      documentId
-      name
-      description
-      slug
-      images {
-        documentId
-        name
-        url
-      }
-    }
-  }
+import type { Album, AlbumItem, Category, Product } from "~/types";
+
+export async function getCategories(): Promise<Category[]> {
+  const { get } = useKairos();
+  const [categories, products] = await Promise.all([
+    get<Category>("categories", { itemsPerPage: "100" }),
+    get<Product>("products", { itemsPerPage: "100", populate: "category" }),
+  ]);
+
+  return (categories ?? []).map((category) => ({
+    ...category,
+    products: (products ?? []).filter(
+      (p) => p.relations?.category?.[0]?.data?.slug === category.slug,
+    ),
+  }));
 }
-`;
 
-const getProductsByCategory = `
-  query getProductsByCategory($slug: String!) {
-    categories(filters: { slug: { eq: $slug } }) {
-      documentId
-      name
-      description
-      slug
-      products {
-        documentId
-        name
-        description
-        slug
-        images {
-          documentId
-          name
-          url
-        }
-      }
-    }
-  }
-`;
+export async function getProductsByCategory(
+  slug: string,
+): Promise<Category | null> {
+  const categories = await getCategories();
+  return categories.find((c) => c.slug === slug) ?? null;
+}
 
-const getProductBySlug = `query GetProductBySlug($slug: String) {
-  products(filters: { slug: { eq: $slug } }) {
-    documentId
-    name
-    description
-    images {
-      documentId
-      name
-      alternativeText
-      formats
-      url
-    }
-  }
-}`;
+export async function getProductBySlug(slug: string): Promise<Product | null> {
+  const { getOne } = useKairos();
+  return getOne<Product>("products", slug, { populate: "category" });
+}
 
-const getAlbumsQuery = `
-  query getAlbums {
-    albums {
-      documentId
-      title
-      slug
-      cover {
-        url
-        name
-        width
-        height
-      }
-    }
-  }
-`;
+export async function getAlbums(): Promise<Album[]> {
+  const { get } = useKairos();
+  const [albums, items] = await Promise.all([
+    get<Album>("albums", { itemsPerPage: "100" }),
+    get<AlbumItem>("albumitems", { itemsPerPage: "100", populate: "album" }),
+  ]);
 
-const getAlbumBySlugQuery = `
-  query getAlbumBySlug($slug: String!) {
-    albums(filters: { slug: { eq: $slug } }) {
-      documentId
-      title
-      slug
-      album_items {
-        documentId
-        label
-        description
-        image {
-          url
-          name
-          width
-          height
-        }
-      }
-    }
-  }
-`;
+  return (albums ?? []).map((album) => ({
+    ...album,
+    album_items: (items ?? []).filter(
+      (i) => i.relations?.album?.[0]?.data?.slug === album.slug,
+    ),
+  }));
+}
 
-export {
-  getProductsByCategory,
-  getCategories,
-  getProductBySlug,
-  getAlbumsQuery,
-  getAlbumBySlugQuery,
-};
+export async function getAlbumBySlug(slug: string): Promise<Album | null> {
+  const albums = await getAlbums();
+  return albums.find((a) => a.slug === slug) ?? null;
+}
