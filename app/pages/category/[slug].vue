@@ -1,24 +1,18 @@
 <script setup lang="ts">
 import { getProductsByCategory } from "~/schemas/eurogrober-queries";
-import type { Category } from "~/types";
 
 definePageMeta({
   layout: "category",
 });
 
 const route = useRoute();
-const graphql = useStrapiGraphQL();
 
 const { data: category, status } = await useAsyncData(
   `category-products-${route.params.slug}`,
 
   async () => {
     try {
-      const response = await graphql<any>(getProductsByCategory, {
-        slug: route.params.slug,
-      });
-
-      return (response?.data?.categories?.[0] as Category) || null;
+      return await getProductsByCategory(route.params.slug as string);
     } catch (error) {
       console.error("Error loading category products:", error);
       return null;
@@ -41,12 +35,12 @@ const isLoading = computed(() => status.value === "pending");
     <div v-else-if="category && category.products && category.products.length > 0"
       class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 mt-8 gap-[30px]">
       <NuxtLink :to="`/product/${product.slug}`" v-for="product in category.products"
-        :key="product.documentId || product.slug">
+        :key="product.slug">
         <div class="group relative mb-8">
           <div
             class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500 aspect-square">
-            <img v-if="product.images && product.images.length > 0" :src="product.images[0]!.url"
-              :alt="product.images[0]!.name || product.name" class="w-full h-full object-cover" />
+            <img v-if="product.images && product.images.length > 0" :src="product.images[0]!"
+              :alt="product.name" class="w-full h-full object-cover" />
 
             <div v-else class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
               No Image

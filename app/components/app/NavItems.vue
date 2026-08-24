@@ -29,11 +29,11 @@ const items = [
   },
   {
     name: "Gallery",
-    to: "#gallery",
+    to: "/#gallery",
   },
   {
     name: "Contact",
-    to: "#contact",
+    to: "/#contact",
   },
 ];
 

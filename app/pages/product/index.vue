@@ -82,7 +82,7 @@ function scrollTo(slug = "") {
                 category.product &&
                 category.product.images &&
                 category.product.images.length > 0
-              " :src="category.product.images[0].url" :alt="category.name" class="w-full h-full object-cover" />
+              " :src="category.product.images[0]" :alt="category.name" class="w-full h-full object-cover" />
               <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
                 No Image
               </div>

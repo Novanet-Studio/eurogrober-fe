@@ -4,7 +4,6 @@ import { getCategories } from "~/schemas/eurogrober-queries";
 
 const markdown = new MarkdownIt();
 const route = useRoute();
-const graphql = useStrapiGraphQL();
 
 const isProductDetail = ref(false);
 const categories = ref([]);
@@ -16,8 +15,7 @@ const { data: categoriesData } = await useAsyncData(
   "layout-categories-list",
   async () => {
     try {
-      const response = await graphql(getCategories);
-      return response?.data?.categories || [];
+      return await getCategories();
     } catch (error) {
       console.error("Error fetching categories in layout:", error);
       return [];
@@ -95,7 +93,7 @@ provide("items", items);
           currentCategory?.products?.length &&
           currentCategory.products[0].images?.length
         " class="h-42 lg:h-80 w-full bg-center object-contain object-top"
-          :src="currentCategory.products[0].images[0].url" :alt="currentCategory.name" />
+          :src="currentCategory.products[0].images[0]" :alt="currentCategory.name" />
 
         <div v-else class="h-42 lg:h-80 w-full bg-gray-200 flex items-center justify-center text-gray-400">
           <span>Select a category</span>

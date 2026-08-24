@@ -16,7 +16,6 @@ definePageMeta({
 });
 
 const markdown = new MarkdownIt();
-const graphql = useStrapiGraphQL();
 const route = useRoute();
 const { slug } = route.params;
 
@@ -30,8 +29,7 @@ const { data: product } = await useAsyncData(
   `product-detail-${slug}`,
   async () => {
     try {
-      const result = await graphql(getProductBySlug, { slug });
-      return result?.data?.products?.[0] || null;
+      return await getProductBySlug(slug);
     } catch (error) {
       console.error(error);
       return null;
@@ -51,20 +49,19 @@ watch(
 );
 
 const onThumbsInit = (e) => {
-  console.log("Thumbs inicializado");
   thumbsSwiperInstance.value = e.detail[0];
 };
 
+const onMainInit = (e) => {
+  mainSwiperInstance.value = e.detail[0];
+};
+
 const handlePrev = () => {
-  if (thumbsSwiperInstance.value) {
-    thumbsSwiperInstance.value.slidePrev();
-  }
+  mainSwiperInstance.value?.slidePrev();
 };
 
 const handleNext = () => {
-  if (thumbsSwiperInstance.value) {
-    thumbsSwiperInstance.value.slideNext();
-  }
+  mainSwiperInstance.value?.slideNext();
 };
 
 const handleThumbClick = (index) => {
@@ -94,7 +91,7 @@ const handleThumbClick = (index) => {
               watch-slides-progress="true" :modules="[Navigation, Thumbs]" class="h-full w-full mySwiperThumbs">
               <swiper-slide v-for="(image, i) in product.images" :key="i" @click="handleThumbClick(i)"
                 class="cursor-pointer border border-transparent rounded-md overflow-hidden bg-white hover:border-red-400 transition-all box-border">
-                <img :src="image.url" class="w-full h-full object-contain p-1 pointer-events-none" />
+                <img :src="image" class="w-full h-full object-contain p-1 pointer-events-none" />
               </swiper-slide>
             </swiper-container>
 
@@ -109,11 +106,12 @@ const handleThumbClick = (index) => {
               {{ product.name }}
             </div>
 
-            <swiper-container slides-per-view="1" space-between="20" :thumbs="{ swiper: thumbsSwiperInstance }"
-              :modules="[Navigation, Thumbs, Mousewheel]" class="h-full w-full mySwiperPrincipal">
+            <swiper-container @swiper="onMainInit" slides-per-view="1" space-between="20"
+              :thumbs="{ swiper: thumbsSwiperInstance }" :modules="[Navigation, Thumbs, Mousewheel]"
+              class="h-full w-full mySwiperPrincipal">
               <swiper-slide v-for="(image, i) in product.images" :key="i"
                 class="flex items-center justify-center bg-white">
-                <img :src="image.url" class="max-w-full max-h-full object-contain p-8" />
+                <img :src="image" class="max-w-full max-h-full object-contain p-8" />
               </swiper-slide>
             </swiper-container>
           </div>

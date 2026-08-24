@@ -30,7 +30,7 @@ const { albums, isLoading } = await useGetAlbums();
             <div
               class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md transition-all duration-500 aspect-[4/3]">
 
-              <img v-if="album.cover && album.cover.url" :src="album.cover.url" :alt="album.title"
+              <img v-if="album.cover" :src="album.cover" :alt="album.title"
                 class="w-full h-full object-cover" />
 
               <div v-else class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">

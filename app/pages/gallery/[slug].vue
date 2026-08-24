@@ -1,35 +1,19 @@
 <script setup lang="ts">
-import { getAlbumBySlugQuery } from '~/schemas/eurogrober-queries';
-import type { Album } from '~/types';
-
+import { getAlbumBySlug } from '~/schemas/eurogrober-queries';
 
 definePageMeta({
     layout: "gallery",
 });
 
 const route = useRoute();
-const graphql = useStrapiGraphQL();
-
-
-
 
 const { data: album, status } = await useAsyncData(
 
     `gallery-album-${route.params.slug}`,
 
     async () => {
-
-        if (import.meta.server) console.log(`[SERVER] Fetching album: ${route.params.slug}`);
-        if (import.meta.client) console.log(`[CLIENT] Fetching album: ${route.params.slug}`);
-
         try {
-            const response = await graphql<any>(getAlbumBySlugQuery, {
-                slug: route.params.slug,
-            });
-
-
-            const data = response?.data?.albums?.[0] || null;
-            return data as Album;
+            return await getAlbumBySlug(route.params.slug as string);
         } catch (error) {
             console.error("Error loading album items:", error);
             return null;
@@ -58,9 +42,9 @@ const isLoading = computed(() => status.value === 'pending');
 
         <div v-else-if="album && album.album_items && album.album_items.length > 0"
             class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 mt-8">
-            <div v-for="item in album.album_items" :key="item.documentId"
+            <div v-for="(item, i) in album.album_items" :key="i"
                 class="break-inside-avoid relative group rounded-lg overflow-hidden shadow-md bg-white hover:shadow-xl transition-all duration-300 mb-6">
-                <img :src="item.image.url" :alt="item.label || album.title"
+                <img :src="item.image" :alt="item.label || album.title"
                     class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
                     loading="lazy" />
 

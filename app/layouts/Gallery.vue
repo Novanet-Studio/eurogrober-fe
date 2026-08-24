@@ -1,8 +1,7 @@
 <script setup>
-import { getAlbumsQuery } from '~/schemas/eurogrober-queries';
+import { getAlbums } from '~/schemas/eurogrober-queries';
 
 const route = useRoute();
-const graphql = useStrapiGraphQL();
 
 const isItemDetail = ref(false);
 const albums = ref([]);
@@ -13,8 +12,7 @@ const { data: albumsData } = await useAsyncData(
     "layout-albums-list",
     async () => {
         try {
-            const response = await graphql(getAlbumsQuery);
-            return response?.data?.albums || [];
+            return await getAlbums();
         } catch (error) {
             console.error("Error fetching albums:", error);
             return [];
@@ -74,7 +72,7 @@ watchEffect(() => {
                 </div>
             </div>
             <div class="relative bg-gray-100 min-h-[200px] max-h-[300px]">
-                <img v-if="currentAlbum?.cover?.url" class="h-full w-full" :src="currentAlbum.cover.url"
+                <img v-if="currentAlbum?.cover" class="h-full w-full" :src="currentAlbum.cover"
                     :alt="currentAlbum.title" />
             </div>
         </div>
